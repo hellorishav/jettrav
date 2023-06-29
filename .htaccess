@@ -1,0 +1,6 @@
+RewriteEngine On
+RewriteBase /
+
+RewriteCond %{HTTP_HOST} ^jettrav\.rishavkumar\.io$ [NC]
+RewriteCond %{REQUEST_URI} !^/prod/default\.php
+RewriteRule ^(.*)$ /prod/default.php [L]
