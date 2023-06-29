@@ -1,4 +1,4 @@
-# jettrav
+# Jettrav
 Jettrav Website Repo. Arizona State University Capstone 1 Project.
 
 Use QA instance to test and play around with code
@@ -10,10 +10,10 @@ If you edit and commit those to the GitHub repository, you should be able to acc
 
 For example, if you commited anything to the instance, go to the following links to view them:
 
-QA
--> dashboard: https://jettrav.rishavkumar.io/qa/dashboard
--> login: https://jettrav.rishavkumar.io/qa/login
--> survey: https://jettrav.rishavkumar.io/qa/survey
+QA<br>
+-> dashboard: https://jettrav.rishavkumar.io/qa/dashboard <br>
+-> login: https://jettrav.rishavkumar.io/qa/login <br>
+-> survey: https://jettrav.rishavkumar.io/qa/survey <br>
 
 Prod
 -> prod-instance: https://jettrav.rishavkumar.io/
