@@ -117,12 +117,32 @@
             </ul>
         </nav>
     </header>
-
-    <!--   DO WHATEVER YOU WANT HERE -->
-
-        This is for you to play around and get used to the environment!
-
-    <!--   DO WHATEVER YOU WANT HERE -->
+    
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to</h1>
+            <h1 class="jettrav-heading">Jettrav</h1>
+            <p>Your personalized travel planning platform</p>
+            <a href="#" class="btn">Get Started</a>
+        </div>
+    </section>
+    
+    <section class="features">
+        <div class="feature">
+            <h2>Customize Your Trip</h2>
+            <p>Take our survey to select your preferred destinations and activities for a personalized vacation experience.</p>
+        </div>
+        
+        <div class="feature">
+            <h2>Live Itinerary Updates</h2>
+            <p>Stay informed about your upcoming activities and receive real-time updates about your trip itinerary.</p>
+        </div>
+        
+        <div class="feature">
+            <h2>24/7 Customer Support</h2>
+            <p>Our friendly staff is always available to assist you during your trip. Reach out to us anytime through our messaging service.</p>
+        </div>
+    </section>
     
     <footer>
         <p>&copy; <?php echo date("Y"); ?> Jettrav. All rights reserved.</p>
