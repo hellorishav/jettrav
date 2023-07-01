@@ -1,0 +1,4 @@
+implement login page
+use PNR instead of username/password
+connect to database for creation of PNR
+connect to database for retrieval of PNR
