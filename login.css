@@ -1,0 +1,41 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: #dad7cf; /* Background color for the page */
+  }
+  
+  .login-container {
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    background: #fff; /* Background color for the login container */
+  }
+  
+  h1 {
+    margin-bottom: 20px;
+    color: #3f6161; /* Accent color for the heading */
+  }
+  
+  input[type="text"],
+  input[type="password"],
+  input[type="submit"] {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  input[type="submit"] {
+    background: #3f6161; /* Accent color for the submit button */
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  input[type="submit"]:hover {
+    background: #2c4949; /* Darker shade for hover effect */
+  }
