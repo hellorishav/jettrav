@@ -123,7 +123,7 @@
             <h1>Welcome to</h1>
             <h1 class="jettrav-heading">Jettrav</h1>
             <p>Your personalized travel planning platform</p>
-            <a href="#" class="btn">Get Started</a>
+            <a href="#" class="btn">hi</a>
         </div>
     </section>
     
