@@ -117,7 +117,46 @@
             <div class="confirmation-icon">
                 <i class="material-icons">check_circle</i>
             </div>
-            <p>We have received your submission and we'll get back to you shortly.</p>
+            <?php if (isset($_GET['confirm']) && $_GET['confirm'] === 'true') : ?>
+                <?php
+                $servername = "localhost";
+                $username = "u947421468_jettrav";
+                $password = "Jettrav@capstone1";
+                $dbname = "u947421468_jettrav";
+
+                // Create connection
+                $conn = new mysqli($servername, $username, $password, $dbname);
+
+                // Check connection
+                if ($conn->connect_error) {
+                    die("Connection failed: " . $conn->connect_error);
+                }
+
+                $name = $_POST['name'];
+                $email = $_POST['email'];
+                $phone = $_POST['phone'];
+                $from_city = $_POST['from'];
+                $destination_city = $_POST['destination'];
+                $departure_date = $_POST['departure_date'];
+                $return_date = $_POST['return_date'];
+                $citizenship = $_POST['citizenship'];
+                $additional_details = $_POST['additional_details'];
+
+                $sql = "INSERT INTO leads (name, email, phone, from_city, destination_city, departure_date, return_date, citizenship, additional_details)
+                        VALUES ('$name', '$email', '$phone', '$from_city', '$destination_city', '$departure_date', '$return_date', '$citizenship', '$additional_details')";
+
+                if ($conn->query($sql) === TRUE) {
+                    $last_id = $conn->insert_id;
+                    echo "<p>We have received your submission with ID: <strong>$last_id</strong>. We'll get back to you shortly.</p>";
+                } else {
+                    echo "Error: " . $sql . "<br>" . $conn->error;
+                }
+
+                $conn->close();
+                ?>
+            <?php else: ?>
+                <p>We have received your submission and we'll get back to you shortly.</p>
+            <?php endif; ?>
         </div>
         <form method="post" action="?confirm=true">
             <div class="form-group">
