@@ -2,27 +2,33 @@
 <html>
 <head>
     <title>JetTrav - Trip Information</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Roboto', sans-serif;
             background-color: #f5f5f5;
             margin: 0;
             padding: 0;
         }
 
         .container {
-            max-width: 500px;
-            margin: 0 auto;
-            padding: 20px;
+            max-width: 400px;
+            width: 100%;
+            padding: 40px;
             background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             text-align: center;
         }
 
         h1 {
             color: #333;
-            margin-bottom: 20px;
+            margin-bottom: 40px;
         }
 
         input[type="text"],
@@ -30,31 +36,31 @@
             width: 100%;
             padding: 12px;
             margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            border: none;
+            border-radius: 4px;
+            background-color: #f5f5f5;
             font-size: 16px;
-            transition: border-color 0.3s;
+            transition: background-color 0.3s;
         }
 
         input[type="text"]:focus,
         select:focus {
-            outline: none;
-            border-color: #6fb3e0;
+            background-color: #e0e0e0;
         }
 
         input[type="submit"] {
-            background-color: #4caf50;
+            background-color: #2196f3;
             color: #fff;
             padding: 12px 20px;
             border: none;
-            border-radius: 5px;
+            border-radius: 4px;
             font-size: 16px;
             cursor: pointer;
             transition: background-color 0.3s;
         }
 
         input[type="submit"]:hover {
-            background-color: #45a049;
+            background-color: #1976d2;
         }
     </style>
 </head>
