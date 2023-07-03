@@ -79,12 +79,32 @@
         .material-icons {
             vertical-align: middle;
         }
+
+        .confirmation-message {
+            display: none;
+            color: #333;
+            margin-bottom: 40px;
+        }
+
+        <?php if (isset($_GET['confirm']) && $_GET['confirm'] === 'true') : ?>
+        .form-group,
+        input[type="submit"] {
+            display: none;
+        }
+
+        .confirmation-message {
+            display: block;
+        }
+        <?php endif; ?>
     </style>
 </head>
 <body>
     <div class="container">
         <h1>JetTrav - Trip Information</h1>
-        <form>
+        <div class="confirmation-message">
+            <p>We have received your submission and we'll get back to you shortly.</p>
+        </div>
+        <form method="post" action="?confirm=true">
             <div class="form-group">
                 <label for="name"><i class="material-icons">person</i> Your Name</label>
                 <input type="text" id="name" name="name" placeholder="Your Name" required>
@@ -105,7 +125,7 @@
                 <label for="return_date"><i class="material-icons">calendar_today</i> Return Date</label>
                 <input type="text" id="return_date" name="return_date" placeholder="Return Date" required>
             </div>
-            <input type="submit" value="Submit" onclick="window.location.href='https://www.google.com/'">
+            <input type="submit" value="Submit">
         </form>
     </div>
 </body>
