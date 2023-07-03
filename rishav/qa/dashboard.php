@@ -17,8 +17,8 @@
         }
 
         .container {
-            max-width: 800px;
-            width: 100%;
+            width: 90%;
+            max-width: 1200px;
             padding: 40px;
             background-color: #fff;
             border-radius: 4px;
@@ -67,13 +67,35 @@
             background-color: #e0e0e0;
         }
     </style>
+    <script>
+        function searchLeads() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("search-input");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("leads-table");
+            tr = table.getElementsByTagName("tr");
+
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td");
+                for (var j = 0; j < td.length; j++) {
+                    txtValue = td[j].textContent || td[j].innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                        break;
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
 </head>
 <body>
     <div class="container">
         <h1>Leads Dashboard</h1>
 
         <div class="search-container">
-            <input type="text" id="search-input" placeholder="Search by name or city">
+            <input type="text" id="search-input" placeholder="Search by name or city" onkeyup="searchLeads()">
         </div>
 
         <?php
@@ -90,12 +112,11 @@
             die("Connection failed: " . $conn->connect_error);
         }
 
-        // Fetch leads data
-        $query = "SELECT * FROM leads";
-        $result = $conn->query($query);
+        $sql = "SELECT * FROM leads";
+        $result = $conn->query($sql);
 
         if ($result && $result->num_rows > 0) {
-            echo '<table>';
+            echo '<table id="leads-table">';
             echo '<tr>';
             echo '<th>ID</th>';
             echo '<th>Name</th>';
