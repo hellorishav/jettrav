@@ -85,6 +85,7 @@
             color: #333;
             margin-bottom: 40px;
             font-size: 24px;
+            line-height: 32px;
         }
 
         .confirmation-icon {
