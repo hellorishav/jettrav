@@ -62,17 +62,48 @@
         input[type="submit"]:hover {
             background-color: #1976d2;
         }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        label {
+            display: block;
+            color: #888;
+            margin-bottom: 8px;
+            font-size: 14px;
+            text-align: left;
+        }
+
+        .material-icons {
+            vertical-align: middle;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>JetTrav - Trip Information</h1>
         <form>
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="text" name="from" placeholder="Departure City" required>
-            <input type="text" name="destination" placeholder="Destination" required>
-            <input type="text" name="departure_date" placeholder="Departure Date" required>
-            <input type="text" name="return_date" placeholder="Return Date" required>
+            <div class="form-group">
+                <label for="name"><i class="material-icons">person</i> Your Name</label>
+                <input type="text" id="name" name="name" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+                <label for="from"><i class="material-icons">flight_takeoff</i> Departure City</label>
+                <input type="text" id="from" name="from" placeholder="Departure City" required>
+            </div>
+            <div class="form-group">
+                <label for="destination"><i class="material-icons">flight_land</i> Destination</label>
+                <input type="text" id="destination" name="destination" placeholder="Destination" required>
+            </div>
+            <div class="form-group">
+                <label for="departure_date"><i class="material-icons">calendar_today</i> Departure Date</label>
+                <input type="text" id="departure_date" name="departure_date" placeholder="Departure Date" required>
+            </div>
+            <div class="form-group">
+                <label for="return_date"><i class="material-icons">calendar_today</i> Return Date</label>
+                <input type="text" id="return_date" name="return_date" placeholder="Return Date" required>
+            </div>
             <input type="submit" value="Submit" onclick="window.location.href='https://www.google.com/'">
         </form>
     </div>
