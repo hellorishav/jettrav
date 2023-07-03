@@ -82,33 +82,36 @@
             vertical-align: middle;
         }
 
-        .tab-container {
+        .tab-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
             display: flex;
-            justify-content: space-around;
-            margin-bottom: 20px;
+            justify-content: space-between;
         }
 
         .tab-link {
             flex-grow: 1;
-            text-align: center;
             padding: 10px;
-            cursor: pointer;
-            background-color: #ddd;
+            background-color: #eee;
             border-radius: 4px 4px 0 0;
+            cursor: pointer;
+            transition: background-color 0.3s;
         }
 
         .tab-link:hover {
-            background-color: #ccc;
+            background-color: #ddd;
         }
 
-        .active {
+        .tab-link.active {
             background-color: #fff;
-            border-bottom: none;
-            cursor: default;
         }
 
         .tab-content {
             display: none;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 0 4px 4px 4px;
         }
 
         .tab-content.active {
@@ -126,17 +129,37 @@
         }
     </style>
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set the login tab as active by default
+            document.querySelector('.tab-link[data-tab="login-tab"]').classList.add('active');
+            document.getElementById('login-tab').classList.add('active');
+
+            // Add event listener to tab links for tab switching
+            var tabLinks = document.querySelectorAll('.tab-link');
+            tabLinks.forEach(function(link) {
+                link.addEventListener('click', function() {
+                    var tabName = this.dataset.tab;
+                    switchTab(tabName);
+                });
+            });
+        });
+
         function switchTab(tabName) {
-            var tabLinks = document.getElementsByClassName('tab-link');
-            var tabContents = document.getElementsByClassName('tab-content');
+            var tabLinks = document.querySelectorAll('.tab-link');
+            var tabContents = document.querySelectorAll('.tab-content');
 
-            for (var i = 0; i < tabLinks.length; i++) {
-                tabLinks[i].classList.remove('active');
-                tabContents[i].classList.remove('active');
-            }
+            // Remove active class from all tab links and contents
+            tabLinks.forEach(function(link) {
+                link.classList.remove('active');
+            });
 
+            tabContents.forEach(function(content) {
+                content.classList.remove('active');
+            });
+
+            // Add active class to the clicked tab link and corresponding content
+            document.querySelector('.tab-link[data-tab="' + tabName + '"]').classList.add('active');
             document.getElementById(tabName).classList.add('active');
-            document.getElementById(tabName + '-link').classList.add('active');
         }
     </script>
 </head>
@@ -144,12 +167,12 @@
     <div class="container">
         <h1>Authentication System</h1>
 
-        <div class="tab-container">
-            <div id="create-account-link" class="tab-link active" onclick="switchTab('create-account')">Create Account</div>
-            <div id="login-link" class="tab-link" onclick="switchTab('login')">Login</div>
-        </div>
+        <ul class="tab-links">
+            <li><a class="tab-link" href="#" data-tab="create-account-tab">Create Account</a></li>
+            <li><a class="tab-link" href="#" data-tab="login-tab">Login</a></li>
+        </ul>
 
-        <div id="create-account" class="tab-content active">
+        <div id="create-account-tab" class="tab-content">
             <h2>Create Account</h2>
             <?php
             $servername = "localhost";
@@ -207,7 +230,7 @@
             </form>
         </div>
 
-        <div id="login" class="tab-content">
+        <div id="login-tab" class="tab-content">
             <h2>Login</h2>
             <?php
             if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
