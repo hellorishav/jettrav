@@ -84,6 +84,13 @@
             display: none;
             color: #333;
             margin-bottom: 40px;
+            font-size: 24px;
+        }
+
+        .confirmation-icon {
+            font-size: 48px;
+            color: #4caf50;
+            margin-bottom: 20px;
         }
 
         <?php if (isset($_GET['confirm']) && $_GET['confirm'] === 'true') : ?>
@@ -102,6 +109,9 @@
     <div class="container">
         <h1>JetTrav - Trip Information</h1>
         <div class="confirmation-message">
+            <div class="confirmation-icon">
+                <i class="material-icons">check_circle</i>
+            </div>
             <p>We have received your submission and we'll get back to you shortly.</p>
         </div>
         <form method="post" action="?confirm=true">
