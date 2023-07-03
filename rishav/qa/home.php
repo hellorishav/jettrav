@@ -32,7 +32,8 @@
         }
 
         input[type="text"],
-        select {
+        select,
+        textarea {
             width: 100%;
             padding: 12px;
             margin-bottom: 20px;
@@ -45,7 +46,8 @@
         }
 
         input[type="text"]:focus,
-        select:focus {
+        select:focus,
+        textarea:focus {
             background-color: #e0e0e0;
         }
 
@@ -121,20 +123,20 @@
                 <input type="text" id="name" name="name" placeholder="Your Name" required>
             </div>
             <div class="form-group">
-                <label for="from"><i class="material-icons">flight_takeoff</i> Departure City</label>
-                <input type="text" id="from" name="from" placeholder="Departure City" required>
+                <label for="email"><i class="material-icons">email</i> Email</label>
+                <input type="text" id="email" name="email" placeholder="Email" required>
             </div>
             <div class="form-group">
-                <label for="destination"><i class="material-icons">flight_land</i> Destination</label>
-                <input type="text" id="destination" name="destination" placeholder="Destination" required>
+                <label for="phone"><i class="material-icons">phone</i> Phone Number</label>
+                <input type="text" id="phone" name="phone" placeholder="Phone Number" required>
             </div>
             <div class="form-group">
-                <label for="departure_date"><i class="material-icons">calendar_today</i> Departure Date</label>
-                <input type="text" id="departure_date" name="departure_date" placeholder="Departure Date" required>
+                <label for="citizenship"><i class="material-icons">public</i> Citizenship</label>
+                <input type="text" id="citizenship" name="citizenship" placeholder="Citizenship" required>
             </div>
             <div class="form-group">
-                <label for="return_date"><i class="material-icons">calendar_today</i> Return Date</label>
-                <input type="text" id="return_date" name="return_date" placeholder="Return Date" required>
+                <label for="additional_details"><i class="material-icons">note</i> Additional Details</label>
+                <textarea id="additional_details" name="additional_details" placeholder="Any additional details you would like us to know"></textarea>
             </div>
             <input type="submit" value="Submit">
         </form>
