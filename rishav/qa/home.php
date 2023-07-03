@@ -6,10 +6,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <style>
         body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
             font-family: 'Roboto', sans-serif;
             background-color: #f5f5f5;
             margin: 0;
@@ -17,15 +13,13 @@
         }
 
         .container {
-            max-width: 400px;
-            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             padding: 40px;
-            background-color: #fff;
-            border-radius: 4px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
             text-align: center;
-            overflow-y: auto;
-            max-height: 80vh; /* Adjust the max-height as needed */
         }
 
         h1 {
