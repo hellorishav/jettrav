@@ -24,6 +24,8 @@
             border-radius: 4px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             text-align: center;
+            overflow-y: auto;
+            max-height: 80vh; /* Adjust the max-height as needed */
         }
 
         h1 {
