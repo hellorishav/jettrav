@@ -15,7 +15,7 @@
             margin: 0 auto;
             padding: 20px;
             background-color: #fff;
-            border-radius: 5px;
+            border-radius: 10px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             text-align: center;
         }
@@ -28,19 +28,29 @@
         input[type="text"],
         select {
             width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
+            padding: 12px;
+            margin-bottom: 20px;
             border: 1px solid #ccc;
             border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus,
+        select:focus {
+            outline: none;
+            border-color: #6fb3e0;
         }
 
         input[type="submit"] {
             background-color: #4caf50;
             color: #fff;
-            padding: 10px 20px;
+            padding: 12px 20px;
             border: none;
             border-radius: 5px;
+            font-size: 16px;
             cursor: pointer;
+            transition: background-color 0.3s;
         }
 
         input[type="submit"]:hover {
