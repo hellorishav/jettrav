@@ -41,6 +41,7 @@
             background-color: #f5f5f5;
             font-size: 16px;
             transition: background-color 0.3s;
+            box-sizing: border-box;
         }
 
         input[type="text"]:focus,
@@ -65,6 +66,7 @@
 
         .form-group {
             margin-bottom: 24px;
+            text-align: left;
         }
 
         label {
@@ -72,7 +74,6 @@
             color: #888;
             margin-bottom: 8px;
             font-size: 14px;
-            text-align: left;
         }
 
         .material-icons {
