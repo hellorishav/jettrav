@@ -104,9 +104,6 @@
     <div class="container">
         <h1>JetTrav - Trip Information</h1>
         <div class="confirmation-message">
-            <div class="confirmation-icon">
-                <i class="material-icons">check_circle</i>
-            </div>
             <?php if (isset($_GET['confirm']) && $_GET['confirm'] === 'true') : ?>
                 <?php
                 $servername = "localhost";
@@ -137,7 +134,10 @@
 
                 if ($conn->query($sql) === TRUE) {
                     $last_id = $conn->insert_id;
-                    echo "<p>We have received your submission with ID: <strong>$last_id</strong>. We'll get back to you shortly.</p>";
+                    echo "<div class='confirmation-icon'>
+                            <i class='material-icons'>check_circle</i>
+                        </div>
+                        <p>We have received your submission with ID: <strong>$last_id</strong>. We'll get back to you shortly.</p>";
                 } else {
                     echo "Error: " . $sql . "<br>" . $conn->error;
                 }
