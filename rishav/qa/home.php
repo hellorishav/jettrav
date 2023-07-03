@@ -4,7 +4,6 @@
     <title>JetTrav - Trip Information</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <style>
         body {
             display: flex;
@@ -98,12 +97,26 @@
             color: #4caf50;
             margin-bottom: 20px;
         }
+
+        <?php if (isset($_GET['confirm']) && $_GET['confirm'] === 'true') : ?>
+        .form-group,
+        input[type="submit"] {
+            display: none;
+        }
+
+        .confirmation-message {
+            display: block;
+        }
+        <?php endif; ?>
     </style>
 </head>
 <body>
     <div class="container">
         <h1>JetTrav - Trip Information</h1>
         <div class="confirmation-message">
+            <div class="confirmation-icon">
+                <i class="material-icons">check_circle</i>
+            </div>
             <?php if (isset($_GET['confirm']) && $_GET['confirm'] === 'true') : ?>
                 <?php
                 $servername = "localhost";
@@ -124,8 +137,8 @@
                 $phone = $_POST['phone'];
                 $from_city = $_POST['from'];
                 $destination_city = $_POST['destination'];
-                $departure_date = date('Y-m-d', strtotime($_POST['departure_date']));
-                $return_date = date('Y-m-d', strtotime($_POST['return_date']));
+                $departure_date = $_POST['departure_date'];
+                $return_date = $_POST['return_date'];
                 $citizenship = $_POST['citizenship'];
                 $additional_details = $_POST['additional_details'];
 
@@ -134,10 +147,7 @@
 
                 if ($conn->query($sql) === TRUE) {
                     $last_id = $conn->insert_id;
-                    echo "<div class='confirmation-icon'>
-                            <i class='material-icons'>check_circle</i>
-                        </div>
-                        <p>We have received your submission with ID: <strong>$last_id</strong>. We'll get back to you shortly.</p>";
+                    echo "<p>We have received your submission with ID: <strong>$last_id</strong>. We'll get back to you shortly.</p>";
                 } else {
                     echo "Error: " . $sql . "<br>" . $conn->error;
                 }
@@ -188,14 +198,5 @@
             <input type="submit" value="Submit">
         </form>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script>
-        flatpickr('#departure_date', {
-            dateFormat: 'Y-m-d'
-        });
-        flatpickr('#return_date', {
-            dateFormat: 'Y-m-d'
-        });
-    </script>
 </body>
 </html>
