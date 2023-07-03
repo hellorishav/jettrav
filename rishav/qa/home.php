@@ -128,7 +128,23 @@
             </div>
             <div class="form-group">
                 <label for="phone"><i class="material-icons">phone</i> Phone Number</label>
-                <input type="text" id="phone" name="phone" placeholder="Phone Number" required>
+                <input type="text" id="phone" name="phone" placeholder="Phone Number">
+            </div>
+            <div class="form-group">
+                <label for="from"><i class="material-icons">flight_takeoff</i> Departure City</label>
+                <input type="text" id="from" name="from" placeholder="Departure City" required>
+            </div>
+            <div class="form-group">
+                <label for="destination"><i class="material-icons">flight_land</i> Destination City</label>
+                <input type="text" id="destination" name="destination" placeholder="Destination City" required>
+            </div>
+            <div class="form-group">
+                <label for="departure_date"><i class="material-icons">calendar_today</i> Departure Date</label>
+                <input type="text" id="departure_date" name="departure_date" placeholder="Departure Date" required>
+            </div>
+            <div class="form-group">
+                <label for="return_date"><i class="material-icons">calendar_today</i> Return Date</label>
+                <input type="text" id="return_date" name="return_date" placeholder="Return Date" required>
             </div>
             <div class="form-group">
                 <label for="citizenship"><i class="material-icons">public</i> Citizenship</label>
