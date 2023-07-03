@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Authentication System</title>
+    <title>JetTrav - Login and Create Account</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <style>
@@ -28,16 +28,47 @@
             max-height: 80vh; /* Adjust the max-height as needed */
         }
 
-        h1 {
-            color: #333;
-            margin-bottom: 40px;
+        .container h2 {
+            margin-bottom: 20px;
         }
 
-        input[type="text"],
-        input[type="password"] {
+        .tab-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .tab-container .tab {
+            flex: 1;
+            padding: 10px;
+            background-color: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 4px 4px 0 0;
+            cursor: pointer;
+        }
+
+        .tab-container .tab.active {
+            background-color: #fff;
+            border-bottom: none;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            color: #888;
+            margin-bottom: 8px;
+            font-size: 14px;
+            text-align: left;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="password"] {
             width: 100%;
             padding: 12px;
-            margin-bottom: 20px;
             border: none;
             border-radius: 4px;
             background-color: #f5f5f5;
@@ -46,12 +77,28 @@
             box-sizing: border-box;
         }
 
-        input[type="text"]:focus,
-        input[type="password"]:focus {
+        .form-group input[type="text"]:focus,
+        .form-group input[type="password"]:focus {
             background-color: #e0e0e0;
         }
 
-        input[type="submit"] {
+        .form-group .error-message,
+        .form-group .success-message {
+            margin-top: 8px;
+            color: #f44336;
+            font-size: 14px;
+            text-align: left;
+        }
+
+        .form-group .success-message {
+            color: #4caf50;
+        }
+
+        .form-group .hidden {
+            display: none;
+        }
+
+        .form-group button {
             background-color: #2196f3;
             color: #fff;
             padding: 12px 20px;
@@ -62,153 +109,111 @@
             transition: background-color 0.3s;
         }
 
-        input[type="submit"]:hover {
+        .form-group button:hover {
             background-color: #1976d2;
-        }
-
-        .form-group {
-            margin-bottom: 24px;
-            text-align: left;
-        }
-
-        label {
-            display: block;
-            color: #888;
-            margin-bottom: 8px;
-            font-size: 14px;
-        }
-
-        .material-icons {
-            vertical-align: middle;
-        }
-
-        .tab {
-            display: none;
-        }
-
-        .active {
-            display: block;
-        }
-
-        .error-message {
-            color: #ff0000;
-            margin-bottom: 10px;
-        }
-
-        .success-message {
-            color: #009900;
-            margin-bottom: 10px;
         }
     </style>
     <script>
-        function switchTab(tabName) {
-            var tabs = document.getElementsByClassName('tab');
-            for (var i = 0; i < tabs.length; i++) {
-                tabs[i].style.display = 'none';
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.tab');
+            const forms = document.querySelectorAll('.form-container');
+
+            function activateTab(index) {
+                tabs.forEach(tab => tab.classList.remove('active'));
+                forms.forEach(form => form.style.display = 'none');
+
+                tabs[index].classList.add('active');
+                forms[index].style.display = 'block';
             }
 
-            document.getElementById(tabName).style.display = 'block';
-        }
+            tabs.forEach((tab, index) => {
+                tab.addEventListener('click', function() {
+                    activateTab(index);
+                });
+            });
+
+            const loginForm = document.getElementById('login-form');
+            const createAccountForm = document.getElementById('create-account-form');
+
+            loginForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                const username = document.getElementById('login-username').value;
+                const password = document.getElementById('login-password').value;
+
+                // Perform login validation here
+                // You can make an AJAX request to the server to validate the credentials
+
+                // For demonstration purposes, let's assume the login is successful
+                const successMessage = document.getElementById('login-success-message');
+                const errorMessage = document.getElementById('login-error-message');
+
+                errorMessage.classList.add('hidden');
+                successMessage.classList.remove('hidden');
+            });
+
+            createAccountForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                const username = document.getElementById('create-username').value;
+                const password = document.getElementById('create-password').value;
+
+                // Perform account creation validation here
+                // You can make an AJAX request to the server to check if the username already exists
+
+                // For demonstration purposes, let's assume the account creation is successful
+                const successMessage = document.getElementById('create-success-message');
+                const errorMessage = document.getElementById('create-error-message');
+
+                errorMessage.classList.add('hidden');
+                successMessage.classList.remove('hidden');
+            });
+        });
     </script>
 </head>
 <body>
     <div class="container">
-        <h1>Authentication System</h1>
-
-        <ul class="tab-links">
-            <li><a href="#" onclick="switchTab('create-account-tab')">Create Account</a></li>
-            <li><a href="#" onclick="switchTab('login-tab')">Login</a></li>
-        </ul>
-
-        <div id="create-account-tab" class="tab active">
-            <h2>Create Account</h2>
-            <?php
-            $servername = "localhost";
-            $username = "u947421468_jettrav";
-            $password = "Jettrav@capstone1";
-            $dbname = "u947421468_jettrav";
-
-            // Create connection
-            $conn = new mysqli($servername, $username, $password, $dbname);
-
-            // Check connection
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            }
-
-            if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['create-account'])) {
-                $name = $_POST['name'];
-                $username = $_POST['username'];
-                $password = $_POST['password'];
-
-                // Check if the username already exists
-                $checkQuery = "SELECT * FROM credentials WHERE username = '$username'";
-                $checkResult = $conn->query($checkQuery);
-
-                if ($checkResult && $checkResult->num_rows > 0) {
-                    echo '<div class="error-message">Username already exists. Please choose a different username.</div>';
-                } else {
-                    // Hash the password
-                    $hashedPassword = hash('sha256', $password);
-
-                    // Insert the new account into the database
-                    $insertQuery = "INSERT INTO credentials (name, username, password, role) VALUES ('$name', '$username', '$hashedPassword', 'user')";
-                    if ($conn->query($insertQuery) === TRUE) {
-                        echo '<div class="success-message">Account created successfully.</div>';
-                    } else {
-                        echo '<div class="error-message">Error creating account: ' . $conn->error . '</div>';
-                    }
-                }
-            }
-            ?>
-            <form method="post" action="">
+        <h2>JetTrav - Login and Create Account</h2>
+        <div class="tab-container">
+            <div class="tab active">Login</div>
+            <div class="tab">Create Account</div>
+        </div>
+        <div class="form-container" id="login-form-container">
+            <form id="login-form">
                 <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" required>
+                    <label for="login-username">Username</label>
+                    <input type="text" id="login-username" name="login-username" required>
                 </div>
                 <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username" required>
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" name="login-password" required>
                 </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required>
+                <button type="submit">Login</button>
+                <div class="form-group error-message hidden" id="login-error-message">
+                    Incorrect username or password. Please try again.
                 </div>
-                <input type="submit" name="create-account" value="Create Account">
+                <div class="form-group success-message hidden" id="login-success-message">
+                    Login successful. Redirecting...
+                </div>
             </form>
         </div>
-
-        <div id="login-tab" class="tab">
-            <h2>Login</h2>
-            <?php
-            if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
-                $username = $_POST['username'];
-                $password = $_POST['password'];
-
-                // Hash the entered password for comparison
-                $hashedPassword = hash('sha256', $password);
-
-                // Check if the username and hashed password match in the database
-                $loginQuery = "SELECT * FROM credentials WHERE username = '$username' AND password = '$hashedPassword'";
-                $loginResult = $conn->query($loginQuery);
-
-                if ($loginResult && $loginResult->num_rows > 0) {
-                    echo '<div class="success-message">Login successful.</div>';
-                } else {
-                    echo '<div class="error-message">Invalid username or password.</div>';
-                }
-            }
-            ?>
-            <form method="post" action="">
+        <div class="form-container" id="create-account-form-container" style="display: none;">
+            <form id="create-account-form">
                 <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username" required>
+                    <label for="create-username">Username</label>
+                    <input type="text" id="create-username" name="create-username" required>
                 </div>
                 <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required>
+                    <label for="create-password">Password</label>
+                    <input type="password" id="create-password" name="create-password" required>
                 </div>
-                <input type="submit" name="login" value="Login">
+                <button type="submit">Create Account</button>
+                <div class="form-group error-message hidden" id="create-error-message">
+                    Username already exists. Please choose a different username.
+                </div>
+                <div class="form-group success-message hidden" id="create-success-message">
+                    Account created successfully.
+                </div>
             </form>
         </div>
     </div>
