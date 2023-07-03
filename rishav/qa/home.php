@@ -4,6 +4,7 @@
     <title>JetTrav - Trip Information</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <style>
         body {
             display: flex;
@@ -97,17 +98,6 @@
             color: #4caf50;
             margin-bottom: 20px;
         }
-
-        <?php if (isset($_GET['confirm']) && $_GET['confirm'] === 'true') : ?>
-        .form-group,
-        input[type="submit"] {
-            display: none;
-        }
-
-        .confirmation-message {
-            display: block;
-        }
-        <?php endif; ?>
     </style>
 </head>
 <body>
@@ -198,5 +188,17 @@
             <input type="submit" value="Submit">
         </form>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        flatpickr("#departure_date", {
+            enableTime: false,
+            dateFormat: "Y-m-d",
+        });
+
+        flatpickr("#return_date", {
+            enableTime: false,
+            dateFormat: "Y-m-d",
+        });
+    </script>
 </body>
 </html>
