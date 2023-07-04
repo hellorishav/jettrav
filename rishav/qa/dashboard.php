@@ -95,7 +95,7 @@
         <h1>Leads Dashboard</h1>
 
         <div class="search-container">
-            <input type="text" id="search-input" placeholder="Search by name or city" onkeyup="searchLeads()">
+            <input type="text" id="search-input" placeholder="Start typing to search..." onkeyup="searchLeads()">
         </div>
 
         <?php
