@@ -108,6 +108,7 @@ if ($result && $result->num_rows > 0) {
                     }
 
                     var scale = 1 + (minTimeDifference - timeDifference) / 10000;
+                    scale = Math.max(0.5, Math.min(2, scale)); // Restrict scale between 0.5 and 2
                     category.style.transform = 'scale(' + scale + ')';
                 }
             }, 1000); // Check every second
@@ -123,7 +124,7 @@ if ($result && $result->num_rows > 0) {
         <p><strong>From City:</strong> <?php echo $fromCity; ?></p>
         <p><strong>Destination City:</strong> <?php echo $destinationCity; ?></p>
         <p><strong>Departure Date:</strong> <?php echo $departureDate; ?></p>
-        <p><strong>Return Date:</strong> <?php echo $returnDate; ?></p>
+        <p><strong>Return Date:</strong>
     </div>
 
     <div class="category">
