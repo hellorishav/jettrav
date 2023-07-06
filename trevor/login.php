@@ -181,13 +181,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Authentication System</h1>
-
-        <ul class="tab-links">
-            <li><a class="tab-link" href="#" data-tab="create-account-tab">Create Account</a></li>
-            <li><a class="tab-link" href="#" data-tab="login-tab">Login</a></li>
-        </ul>
-
+    <h1>Authentication System</h1>
         <div id="create-account-tab" class="tab-content">
             <h2>Create Account</h2>
             <?php
@@ -247,7 +241,7 @@
         </div>
 
         <div id="login-tab" class="tab-content">
-
+            <h1>Login</h1>
             <?php
             if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
                 $username = $_POST['username'];
@@ -279,6 +273,10 @@
                 <input type="submit" name="login" value="Login">
             </form>
         </div>
+        <ul class="tab-links">
+            <li><a class="tab-link" href="#" data-tab="create-account-tab">Create Account</a></li>
+            <li><a class="tab-link" href="#" data-tab="login-tab">Login</a></li>
+        </ul>
     </div>
 </body>
 </html>
