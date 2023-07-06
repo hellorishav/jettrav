@@ -296,7 +296,7 @@
                     <input type="password" id="password" name="password" required>
                 </div>
                 <input type="submit" name="login" value="Login">
-                <input type="submit" name="create-account" value="Create Account">
+                <input type="submit" name="create-account-tab" value="Create Account">
             </form>
         </div>
         <ul class="tab-links">
