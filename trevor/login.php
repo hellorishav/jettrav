@@ -11,7 +11,7 @@
             align-items: center;
             height: 100vh;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f5f5f5;
+            background-color: #dad7cf;
             margin: 0;
             padding: 0;
         }
