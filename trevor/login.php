@@ -247,7 +247,6 @@
         </div>
 
         <div id="login-tab" class="tab-content">
-            <h2>Login</h2>
             <?php
             if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
                 $username = $_POST['username'];
