@@ -56,6 +56,7 @@ if ($result && $result->num_rows > 0) {
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             padding: 20px;
             max-width: 600px;
+            transition: transform 0.3s, z-index 0.3s;
         }
 
         .category h2 {
@@ -72,7 +73,37 @@ if ($result && $result->num_rows > 0) {
         .category p:last-child {
             margin-bottom: 0;
         }
+
+        .current-category {
+            transform: scale(1.1);
+            z-index: 1;
+        }
     </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var categories = document.querySelectorAll('.category');
+
+            setInterval(function() {
+                var currentTime = new Date().getTime();
+                var scheduledTimes = [
+                    new Date('2023-07-05 12:00:00').getTime(), // Replace with your desired scheduled times
+                    new Date('2023-07-05 13:30:00').getTime(),
+                    new Date('2023-07-05 15:00:00').getTime()
+                ];
+
+                for (var i = 0; i < categories.length; i++) {
+                    var category = categories[i];
+                    var scheduledTime = scheduledTimes[i];
+
+                    if (currentTime >= scheduledTime) {
+                        category.classList.add('current-category');
+                    } else {
+                        category.classList.remove('current-category');
+                    }
+                }
+            }, 1000); // Check every second
+        });
+    </script>
 </head>
 <body>
     <div class="category">
@@ -88,35 +119,17 @@ if ($result && $result->num_rows > 0) {
 
     <div class="category">
         <h2>Hotel</h2>
-        <p><strong>Name:</strong> <?php echo $name; ?></p>
-        <p><strong>Email:</strong> <?php echo $email; ?></p>
-        <p><strong>Phone:</strong> <?php echo $phone; ?></p>
-        <p><strong>From City:</strong> <?php echo $fromCity; ?></p>
-        <p><strong>Destination City:</strong> <?php echo $destinationCity; ?></p>
-        <p><strong>Departure Date:</strong> <?php echo $departureDate; ?></p>
-        <p><strong>Return Date:</strong> <?php echo $returnDate; ?></p>
+        <!-- Add hotel information here -->
     </div>
 
     <div class="category">
         <h2>Transportation</h2>
-        <p><strong>Name:</strong> <?php echo $name; ?></p>
-        <p><strong>Email:</strong> <?php echo $email; ?></p>
-        <p><strong>Phone:</strong> <?php echo $phone; ?></p>
-        <p><strong>From City:</strong> <?php echo $fromCity; ?></p>
-        <p><strong>Destination City:</strong> <?php echo $destinationCity; ?></p>
-        <p><strong>Departure Date:</strong> <?php echo $departureDate; ?></p>
-        <p><strong>Return Date:</strong> <?php echo $returnDate; ?></p>
+        <!-- Add transportation information here -->
     </div>
 
     <div class="category">
         <h2>Excursions</h2>
-        <p><strong>Name:</strong> <?php echo $name; ?></p>
-        <p><strong>Email:</strong> <?php echo $email; ?></p>
-        <p><strong>Phone:</strong> <?php echo $phone; ?></p>
-        <p><strong>From City:</strong> <?php echo $fromCity; ?></p>
-        <p><strong>Destination City:</strong> <?php echo $destinationCity; ?></p>
-        <p><strong>Departure Date:</strong> <?php echo $departureDate; ?></p>
-        <p><strong>Return Date:</strong> <?php echo $returnDate; ?></p>
+        <!-- Add excursions information here -->
     </div>
 
     <div class="category">
