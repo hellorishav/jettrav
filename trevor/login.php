@@ -181,7 +181,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Authentication System</h1>
+        <h1>Login</h1>
 
         <ul class="tab-links">
             <li><a class="tab-link" href="#" data-tab="create-account-tab">Create Account</a></li>
