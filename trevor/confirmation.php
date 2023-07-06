@@ -75,7 +75,7 @@ if ($result && $result->num_rows > 0) {
         }
 
         .current-category {
-            transform: scale(1.1);
+            transform: scale(1.5);
             z-index: 1;
         }
     </style>
