@@ -76,7 +76,7 @@
         }
 
         input[type="submit"]:hover {
-            background-color: #3f6161;
+            background-color: #557878;
         }
 
         .form-group {
