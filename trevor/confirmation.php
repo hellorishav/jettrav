@@ -83,6 +83,7 @@ if ($result && $result->num_rows > 0) {
         document.addEventListener('DOMContentLoaded', function() {
             var categories = document.querySelectorAll('.category');
             var previousCategory = null;
+            var clicked = false;
 
             function handleClick(category) {
                 if (previousCategory) {
@@ -91,10 +92,14 @@ if ($result && $result->num_rows > 0) {
 
                 category.style.transform = 'scale(1.35)';
                 previousCategory = category;
+                clicked = true;
 
                 setTimeout(function() {
-                    category.style.transform = '';
-                }, 70000); // Reset after 70 seconds
+                    if (!clicked) {
+                        category.style.transform = '';
+                    }
+                    clicked = false;
+                }, 30000); // Reset after 30 seconds
             }
 
             categories.forEach(function(category) {
@@ -104,6 +109,10 @@ if ($result && $result->num_rows > 0) {
             });
 
             setInterval(function() {
+                if (clicked) {
+                    return;
+                }
+
                 var currentTime = new Date().getTime();
                 var scheduledTimes = [
                     new Date('2023-07-05 12:00:00').getTime(), // Replace with your desired scheduled times
