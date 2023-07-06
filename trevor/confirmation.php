@@ -13,7 +13,7 @@ if ($conn->connect_error) {
 }
 
 // Retrieve data from the database
-$query = "SELECT * FROM customers WHERE id = 32"; // Replace 123 with the actual customer ID
+$query = "SELECT * FROM leads WHERE id = 32"; // Replace 123 with the actual customer ID
 $result = $conn->query($query);
 
 // Check if the query was successful
