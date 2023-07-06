@@ -270,6 +270,7 @@
                     <input type="password" id="password" name="password" required>
                 </div>
                 <input type="submit" name="login" value="Login">
+                <input type="submit" name="login" value="Create Account">
             </form>
         </div>
         <ul class="tab-links">
