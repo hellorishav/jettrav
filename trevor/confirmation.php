@@ -75,7 +75,7 @@ if ($result && $result->num_rows > 0) {
         }
 
         .current-category {
-            transform: scale(1.5);
+            transform: scale(1.2);
             z-index: 1;
         }
     </style>
@@ -86,20 +86,29 @@ if ($result && $result->num_rows > 0) {
             setInterval(function() {
                 var currentTime = new Date().getTime();
                 var scheduledTimes = [
-                    new Date('2023-07-05 6:50:00').getTime(), // Replace with your desired scheduled times
-                    new Date('2023-07-05 8:00:00').getTime(),
-                    new Date('2023-07-06 12:00:00').getTime()
+                    new Date('2023-07-05 12:00:00').getTime(), // Replace with your desired scheduled times
+                    new Date('2023-07-05 13:30:00').getTime(),
+                    new Date('2023-07-05 15:00:00').getTime()
                 ];
+
+                var timeDifferences = scheduledTimes.map(function(time) {
+                    return Math.abs(time - currentTime);
+                });
+
+                var minTimeDifference = Math.min.apply(null, timeDifferences);
 
                 for (var i = 0; i < categories.length; i++) {
                     var category = categories[i];
-                    var scheduledTime = scheduledTimes[i];
+                    var timeDifference = timeDifferences[i];
 
-                    if (currentTime >= scheduledTime) {
+                    if (timeDifference === minTimeDifference) {
                         category.classList.add('current-category');
                     } else {
                         category.classList.remove('current-category');
                     }
+
+                    var scale = 1 + (minTimeDifference - timeDifference) / 10000;
+                    category.style.transform = 'scale(' + scale + ')';
                 }
             }, 1000); // Check every second
         });
