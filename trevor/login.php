@@ -185,11 +185,11 @@
 
         <ul class="tab-links">
             <li><a class="tab-link" href="#" data-tab="create-account-tab">Create Account</a></li>
-            <li><a class="tab-link" href="#" data-tab="login-tab">Login</a></li>
+            <li><a class="tab-link" href="#" data-tab="login-tab"></a></li>
         </ul>
 
         <div id="create-account-tab" class="tab-content">
-            <h1>Create Account</h1>
+            <h2>Create Account</h2>
             <?php
             $servername = "localhost";
             $username = "u947421468_jettrav";
