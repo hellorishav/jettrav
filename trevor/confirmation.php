@@ -88,7 +88,7 @@ if ($result && $result->num_rows > 0) {
                 var scheduledTimes = [
                     new Date('2023-07-05 12:00:00').getTime(), // Replace with your desired scheduled times
                     new Date('2023-07-05 19:00:00').getTime(),
-                    new Date('2023-07-05 19:00:00').getTime()
+                    new Date('2023-07-05 12:00:00').getTime()
                 ];
 
                 var timeDifferences = scheduledTimes.map(function(time) {
