@@ -105,7 +105,6 @@
 
         .tab-link {
             flex-grow: 1;
-            padding: 10px;
             background-color: #fff;
             border-radius: 4px 4px 0 0;
             cursor: pointer;
