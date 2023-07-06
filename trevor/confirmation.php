@@ -91,12 +91,13 @@ if ($result && $result->num_rows > 0) {
                 }
 
                 category.style.transform = 'scale(1.35)';
+                categories[closestCategoryIndex].style.transform = 'scale(1.0)'
                 previousCategory = category;
                 clicked = true;
 
                 setTimeout(function() {
                     if (!clicked) {
-                        category.style.transform = '';
+                      category.style.transform = '';
                     }
                     clicked = false;
                 }, 30000); // Reset after 30 seconds
