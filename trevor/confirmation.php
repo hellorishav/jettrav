@@ -75,7 +75,7 @@ if ($result && $result->num_rows > 0) {
         }
 
         .current-category {
-            transform: scale(1.2);
+            transform: scale(1.35) !important;
             z-index: 1;
         }
     </style>
@@ -87,8 +87,8 @@ if ($result && $result->num_rows > 0) {
                 var currentTime = new Date().getTime();
                 var scheduledTimes = [
                     new Date('2023-07-05 12:00:00').getTime(), // Replace with your desired scheduled times
-                    new Date('2023-07-05 19:00:00').getTime(),
-                    new Date('2023-07-05 12:00:00').getTime()
+                    new Date('2023-07-05 13:30:00').getTime(),
+                    new Date('2023-07-05 15:00:00').getTime()
                 ];
 
                 var timeDifferences = scheduledTimes.map(function(time) {
@@ -96,6 +96,7 @@ if ($result && $result->num_rows > 0) {
                 });
 
                 var minTimeDifference = Math.min.apply(null, timeDifferences);
+                var closestCategoryIndex = timeDifferences.indexOf(minTimeDifference);
 
                 for (var i = 0; i < categories.length; i++) {
                     var category = categories[i];
@@ -108,9 +109,11 @@ if ($result && $result->num_rows > 0) {
                     }
 
                     var scale = 1 + (minTimeDifference - timeDifference) / 10000;
-                    scale = Math.max(0.85, Math.min(5, scale)); // Restrict scale between 1 and 2
+                    scale = Math.max(0.5, Math.min(2, scale)); // Restrict scale between 0.5 and 2
                     category.style.transform = 'scale(' + scale + ')';
                 }
+
+                categories[closestCategoryIndex].style.transform = 'scale(1.35)';
             }, 1000); // Check every second
         });
     </script>
