@@ -31,6 +31,9 @@
         h1 {
             color: #333;
             margin-bottom: 40px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #3f6161;
+            
         }
 
         input[type="text"],
