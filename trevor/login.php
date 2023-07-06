@@ -35,6 +35,13 @@
             
         }
 
+        h2 {
+            color: #3f6161;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            
+        }
+
+
         input[type="text"],
         input[type="password"] {
             width: 100%;
