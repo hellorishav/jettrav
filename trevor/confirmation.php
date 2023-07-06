@@ -82,6 +82,26 @@ if ($result && $result->num_rows > 0) {
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var categories = document.querySelectorAll('.category');
+            var previousCategory = null;
+
+            function handleClick(category) {
+                if (previousCategory) {
+                    previousCategory.style.transform = '';
+                }
+
+                category.style.transform = 'scale(1.35)';
+                previousCategory = category;
+
+                setTimeout(function() {
+                    category.style.transform = '';
+                }, 30000); // Reset after 30 seconds
+            }
+
+            categories.forEach(function(category) {
+                category.addEventListener('click', function() {
+                    handleClick(this);
+                });
+            });
 
             setInterval(function() {
                 var currentTime = new Date().getTime();
@@ -109,11 +129,11 @@ if ($result && $result->num_rows > 0) {
                     }
 
                     var scale = 1 + (minTimeDifference - timeDifference) / 10000;
-                    scale = Math.max(0.85, Math.min(2, scale)); // Restrict scale between 0.5 and 2
+                    scale = Math.max(0.5, Math.min(2, scale)); // Restrict scale between 0.5 and 2
                     category.style.transform = 'scale(' + scale + ')';
                 }
 
-                categories[closestCategoryIndex].style.transform = 'scale(1.15)';
+                categories[closestCategoryIndex].style.transform = 'scale(1.35)';
             }, 1000); // Check every second
         });
     </script>
