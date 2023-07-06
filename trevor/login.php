@@ -181,6 +181,7 @@
 </head>
 <body>
     <div class="container">
+        <h1>Authentication System</h1>
 
         <ul class="tab-links">
             <li><a class="tab-link" href="#" data-tab="create-account-tab">Create Account</a></li>
@@ -188,7 +189,7 @@
         </ul>
 
         <div id="create-account-tab" class="tab-content">
-            <h1>Create Account</h1>
+            <h2>Create Account</h2>
             <?php
             $servername = "localhost";
             $username = "u947421468_jettrav";
@@ -246,6 +247,7 @@
         </div>
 
         <div id="login-tab" class="tab-content">
+
             <?php
             if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
                 $username = $_POST['username'];
