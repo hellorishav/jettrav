@@ -94,7 +94,7 @@ if ($result && $result->num_rows > 0) {
 
                 setTimeout(function() {
                     category.style.transform = '';
-                }, 30000); // Reset after 30 seconds
+                }, 70000); // Reset after 70 seconds
             }
 
             categories.forEach(function(category) {
