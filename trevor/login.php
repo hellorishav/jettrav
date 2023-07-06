@@ -31,6 +31,7 @@
         h1 {
             color: #3f6161;
             margin-bottom: 40px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             
         }
 
