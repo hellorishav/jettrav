@@ -78,51 +78,28 @@ if ($result && $result->num_rows > 0) {
             transform: scale(1.35) !important;
             z-index: 1;
         }
-
-        .shrink-category {
-            transform: scale(0.8) !important;
-            z-index: -1;
-        }
     </style>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var categories = document.querySelectorAll('.category');
             var previousCategory = null;
             var clicked = false;
-            var timeout;
 
             function handleClick(category) {
                 if (previousCategory) {
-                    clearTimeout(timeout);
                     previousCategory.style.transform = '';
-                    previousCategory.classList.remove('shrink-category');
                 }
 
                 category.style.transform = 'scale(1.35)';
                 previousCategory = category;
                 clicked = true;
 
-                timeout = setTimeout(function() {
+                setTimeout(function() {
                     if (!clicked) {
-                        category.style.transform = '';
+                      category.style.transform = '';
                     }
                     clicked = false;
                 }, 30000); // Reset after 30 seconds
-
-                var largestCategory = getLargestCategory();
-                if (largestCategory && largestCategory !== category) {
-                    largestCategory.classList.add('shrink-category');
-                }
-            }
-
-            function getLargestCategory() {
-                var largestCategory = categories[0];
-                for (var i = 1; i < categories.length; i++) {
-                    if (categories[i].offsetHeight > largestCategory.offsetHeight) {
-                        largestCategory = categories[i];
-                    }
-                }
-                return largestCategory;
             }
 
             categories.forEach(function(category) {
