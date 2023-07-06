@@ -11,7 +11,7 @@
             align-items: center;
             height: 100vh;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #dad7cf;
+            background-color: #f5f5f5;
             margin: 0;
             padding: 0;
         }
@@ -106,7 +106,7 @@
         .tab-link {
             flex-grow: 1;
             padding: 10px;
-            background-color: #fff;
+            background-color: #3f6161;
             border-radius: 4px 4px 0 0;
             cursor: pointer;
             transition: background-color 0.3s;
