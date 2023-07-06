@@ -143,6 +143,25 @@
             color: #009900;
             margin-bottom: 10px;
         }
+
+        .create-account-link {
+            color: #3f6161;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .create-account-link:hover {
+            background-color: #557878;
+        }
+
+        .create-account-link.active:hover {
+            background-color: #557878;
+        }
+
+        .create-account-link.active {
+            background-color: #fff;
+            transition: background-color 0.3s;
+        }
     </style>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -158,7 +177,14 @@
                     switchTab(tabName);
                 });
             });
+            var createAccountLink = document.querySelector('.create-account-link');
+        createAccountLink.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default link behavior
+
+            var tabName = this.dataset.tab;
+            switchTab(tabName);
         });
+    });
 
         function switchTab(tabName) {
             var tabLinks = document.querySelectorAll('.tab-link');
@@ -270,7 +296,7 @@
                     <input type="password" id="password" name="password" required>
                 </div>
                 <input type="submit" name="login" value="Login">
-                <input type="submit" name="login" value="Create Account">
+                <input type="submit" name="create-account" value="Create Account">
             </form>
         </div>
         <ul class="tab-links">
