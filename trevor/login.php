@@ -113,11 +113,11 @@
         }
 
         .tab-link:hover {
-            background-color: #ddd;
+            background-color: #3f6161;
         }
 
         .tab-link.active {
-            background-color: #3f6161;
+            background-color: #fff;
         }
 
         .tab-content {
