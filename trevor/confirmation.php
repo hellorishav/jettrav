@@ -83,17 +83,35 @@ if ($result && $result->num_rows > 0) {
 
     <div class="category">
         <h2>Hotel</h2>
-        <!-- Add hotel information here -->
+        <p><strong>Name:</strong> <?php echo $name; ?></p>
+        <p><strong>Email:</strong> <?php echo $email; ?></p>
+        <p><strong>Phone:</strong> <?php echo $phone; ?></p>
+        <p><strong>From City:</strong> <?php echo $fromCity; ?></p>
+        <p><strong>Destination City:</strong> <?php echo $destinationCity; ?></p>
+        <p><strong>Departure Date:</strong> <?php echo $departureDate; ?></p>
+        <p><strong>Return Date:</strong> <?php echo $returnDate; ?></p>
     </div>
 
     <div class="category">
         <h2>Transportation</h2>
-        <!-- Add transportation information here -->
+        <p><strong>Name:</strong> <?php echo $name; ?></p>
+        <p><strong>Email:</strong> <?php echo $email; ?></p>
+        <p><strong>Phone:</strong> <?php echo $phone; ?></p>
+        <p><strong>From City:</strong> <?php echo $fromCity; ?></p>
+        <p><strong>Destination City:</strong> <?php echo $destinationCity; ?></p>
+        <p><strong>Departure Date:</strong> <?php echo $departureDate; ?></p>
+        <p><strong>Return Date:</strong> <?php echo $returnDate; ?></p>
     </div>
 
     <div class="category">
         <h2>Excursions</h2>
-        <!-- Add excursions information here -->
+        <p><strong>Name:</strong> <?php echo $name; ?></p>
+        <p><strong>Email:</strong> <?php echo $email; ?></p>
+        <p><strong>Phone:</strong> <?php echo $phone; ?></p>
+        <p><strong>From City:</strong> <?php echo $fromCity; ?></p>
+        <p><strong>Destination City:</strong> <?php echo $destinationCity; ?></p>
+        <p><strong>Departure Date:</strong> <?php echo $departureDate; ?></p>
+        <p><strong>Return Date:</strong> <?php echo $returnDate; ?></p>
     </div>
 
     <div class="category">
