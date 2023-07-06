@@ -86,9 +86,9 @@ if ($result && $result->num_rows > 0) {
             setInterval(function() {
                 var currentTime = new Date().getTime();
                 var scheduledTimes = [
-                    new Date('2023-07-05 12:00:00').getTime(), // Replace with your desired scheduled times
-                    new Date('2023-07-05 13:30:00').getTime(),
-                    new Date('2023-07-05 15:00:00').getTime()
+                    new Date('2023-07-05 6:50:00').getTime(), // Replace with your desired scheduled times
+                    new Date('2023-07-05 7:00:00').getTime(),
+                    new Date('2023-07-06 12:00:00').getTime()
                 ];
 
                 for (var i = 0; i < categories.length; i++) {
