@@ -189,7 +189,7 @@
         </ul>
 
         <div id="create-account-tab" class="tab-content">
-            <h2>Create Account</h2>
+            <h1>Create Account</h1>
             <?php
             $servername = "localhost";
             $username = "u947421468_jettrav";
