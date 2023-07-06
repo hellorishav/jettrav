@@ -181,7 +181,6 @@
 </head>
 <body>
     <div class="container">
-    <h1>Authentication System</h1>
         <div id="create-account-tab" class="tab-content">
             <h2>Create Account</h2>
             <?php
