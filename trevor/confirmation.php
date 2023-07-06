@@ -87,7 +87,7 @@ if ($result && $result->num_rows > 0) {
                 var currentTime = new Date().getTime();
                 var scheduledTimes = [
                     new Date('2023-07-05 6:50:00').getTime(), // Replace with your desired scheduled times
-                    new Date('2023-07-05 7:00:00').getTime(),
+                    new Date('2023-07-05 8:00:00').getTime(),
                     new Date('2023-07-06 12:00:00').getTime()
                 ];
 
