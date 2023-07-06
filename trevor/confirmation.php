@@ -108,7 +108,7 @@ if ($result && $result->num_rows > 0) {
                     }
 
                     var scale = 1 + (minTimeDifference - timeDifference) / 10000;
-                    scale = Math.max(1.0, Math.min(2, scale)); // Restrict scale between 0.5 and 2
+                    scale = Math.max(2.0, Math.min(1, scale)); // Restrict scale between 0.5 and 2
                     category.style.transform = 'scale(' + scale + ')';
                 }
             }, 1000); // Check every second
