@@ -4,7 +4,6 @@
     <title>Authentication System</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="login.css?v=<?php echo time(); ?>">
     <style>
         body {
             display: flex;
@@ -64,7 +63,7 @@
         }
 
         input[type="submit"]:hover {
-            background-color: #1976d2;
+            background-color: #638c8c;
         }
 
         .form-group {
