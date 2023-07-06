@@ -39,31 +39,46 @@ if ($result && $result->num_rows > 0) {
 <head>
     <title>Confirmation Page</title>
     <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f1f1f1;
+            margin: 0;
+            padding: 20px;
+        }
+
         .category {
-            margin-bottom: 20px;
+            margin-bottom: 40px;
+            background-color: #fff;
+            border-radius: 4px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
         }
 
         .category h2 {
             color: #3f6161;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin-bottom: 10px;
         }
 
         .category p {
             font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .category p:last-child {
+            margin-bottom: 0;
         }
     </style>
 </head>
 <body>
     <div class="category">
         <h2>Flight</h2>
-        <p>Name: <?php echo $name; ?></p>
-        <p>Email: <?php echo $email; ?></p>
-        <p>Phone: <?php echo $phone; ?></p>
-        <p>From City: <?php echo $fromCity; ?></p>
-        <p>Destination City: <?php echo $destinationCity; ?></p>
-        <p>Departure Date: <?php echo $departureDate; ?></p>
-        <p>Return Date: <?php echo $returnDate; ?></p>
+        <p><strong>Name:</strong> <?php echo $name; ?></p>
+        <p><strong>Email:</strong> <?php echo $email; ?></p>
+        <p><strong>Phone:</strong> <?php echo $phone; ?></p>
+        <p><strong>From City:</strong> <?php echo $fromCity; ?></p>
+        <p><strong>Destination City:</strong> <?php echo $destinationCity; ?></p>
+        <p><strong>Departure Date:</strong> <?php echo $departureDate; ?></p>
+        <p><strong>Return Date:</strong> <?php echo $returnDate; ?></p>
     </div>
 
     <div class="category">
