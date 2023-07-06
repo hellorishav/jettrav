@@ -44,14 +44,18 @@ if ($result && $result->num_rows > 0) {
             background-color: #f1f1f1;
             margin: 0;
             padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
 
         .category {
-            margin-bottom: 40px;
             background-color: #fff;
             border-radius: 4px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             padding: 20px;
+            max-width: 600px;
         }
 
         .category h2 {
@@ -62,6 +66,7 @@ if ($result && $result->num_rows > 0) {
         .category p {
             font-size: 16px;
             margin-bottom: 8px;
+            text-align: center;
         }
 
         .category p:last-child {
@@ -83,35 +88,17 @@ if ($result && $result->num_rows > 0) {
 
     <div class="category">
         <h2>Hotel</h2>
-        <p><strong>Name:</strong> <?php echo $name; ?></p>
-        <p><strong>Email:</strong> <?php echo $email; ?></p>
-        <p><strong>Phone:</strong> <?php echo $phone; ?></p>
-        <p><strong>From City:</strong> <?php echo $fromCity; ?></p>
-        <p><strong>Destination City:</strong> <?php echo $destinationCity; ?></p>
-        <p><strong>Departure Date:</strong> <?php echo $departureDate; ?></p>
-        <p><strong>Return Date:</strong> <?php echo $returnDate; ?></p>
+        <!-- Add hotel information here -->
     </div>
 
     <div class="category">
         <h2>Transportation</h2>
-        <p><strong>Name:</strong> <?php echo $name; ?></p>
-        <p><strong>Email:</strong> <?php echo $email; ?></p>
-        <p><strong>Phone:</strong> <?php echo $phone; ?></p>
-        <p><strong>From City:</strong> <?php echo $fromCity; ?></p>
-        <p><strong>Destination City:</strong> <?php echo $destinationCity; ?></p>
-        <p><strong>Departure Date:</strong> <?php echo $departureDate; ?></p>
-        <p><strong>Return Date:</strong> <?php echo $returnDate; ?></p>
+        <!-- Add transportation information here -->
     </div>
 
     <div class="category">
         <h2>Excursions</h2>
-        <p><strong>Name:</strong> <?php echo $name; ?></p>
-        <p><strong>Email:</strong> <?php echo $email; ?></p>
-        <p><strong>Phone:</strong> <?php echo $phone; ?></p>
-        <p><strong>From City:</strong> <?php echo $fromCity; ?></p>
-        <p><strong>Destination City:</strong> <?php echo $destinationCity; ?></p>
-        <p><strong>Departure Date:</strong> <?php echo $departureDate; ?></p>
-        <p><strong>Return Date:</strong> <?php echo $returnDate; ?></p>
+        <!-- Add excursions information here -->
     </div>
 
     <div class="category">
