@@ -192,7 +192,8 @@ if (isset($_SESSION['username'])) {
         </div>
     <?php else: ?>
         <div class="container">
-            User not authenticated.
+            User not authenticated.<br>
+            <a href="login.php" class="login-button">Logout</a>
         </div>
     <?php endif; ?>
 </body>
