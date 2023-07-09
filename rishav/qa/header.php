@@ -47,11 +47,18 @@
             padding: 8px 16px;
             border: none;
             border-radius: 4px;
-            background-color: #1976d2;
-            color: #fff;
             font-weight: 500;
             text-decoration: none;
             transition: background-color 0.3s ease;
+            display: block;
+            margin-bottom: 12px;
+            padding: 12px 0;
+            background-color: #2196f3;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 18px;
+            transition: background-color 0.3s;
         }
 
         .login-button:hover {
