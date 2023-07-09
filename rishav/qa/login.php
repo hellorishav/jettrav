@@ -196,8 +196,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
 </head>
 <body>
     <div class="container">
-        <h1>Authentication System</h1>
-
         <div id="create-account-tab" class="tab-content">
             <h2>Create Account</h2>
             <form method="post" action="">
