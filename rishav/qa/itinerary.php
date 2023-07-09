@@ -20,9 +20,11 @@ if ($conn->connect_error) {
 
 $clientID = "";
 $clientName = "";
+$clientPhone = "";
+$clientEmail = "";
 
 // Check if client ID is submitted
-if (isset($_POST['clientID'])) {
+if (isset($_POST['retrieve-client'])) {
     $clientID = $_POST['clientID'];
 
     // Fetch client details from the leads table
@@ -32,6 +34,8 @@ if (isset($_POST['clientID'])) {
     if ($clientResult && $clientResult->num_rows > 0) {
         $clientData = $clientResult->fetch_assoc();
         $clientName = $clientData['name'];
+        $clientPhone = $clientData['phone'];
+        $clientEmail = $clientData['email'];
     } else {
         // Client not found
         $clientID = "";
@@ -55,9 +59,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
                     VALUES ('$clientID', '$flights', '$hotels', '$totalCost', '$departure', '$returnDate', '$additionalDetails', '$staff')";
 
     if ($conn->query($insertQuery) === TRUE) {
-        echo '<div class="success-message">Itinerary created successfully.</div>';
+        $successMessage = 'Itinerary created successfully.';
     } else {
-        echo '<div class="error-message">Error creating itinerary: ' . $conn->error . '</div>';
+        $errorMessage = 'Error creating itinerary: ' . $conn->error;
     }
 }
 
@@ -148,7 +152,20 @@ $conn->close();
         <h1>Create Itinerary</h1>
 
         <form method="post" action="">
-            <input type="text" name="clientID" placeholder="Client ID" value="<?php echo $clientID; ?>" required><br>
+            <input type="text" name="clientID" placeholder="Client ID" value="<?php echo $clientID; ?>" required>
+            <input type="submit" name="retrieve-client" value="RetrieveClient">
+
+            <?php if (!empty($clientName)): ?>
+                <div>
+                    <strong>Client ID:</strong> <?php echo $clientID; ?><br>
+                    <strong>Client Name:</strong> <?php echo $clientName; ?><br>
+                    <strong>Client Phone:</strong> <?php echo $clientPhone; ?><br>
+                    <strong>Client Email:</strong> <?php echo $clientEmail; ?>
+                </div>
+            <?php elseif (!empty($clientID)): ?>
+                <div class="error-message">Client not found.</div>
+            <?php endif; ?>
+
             <input type="text" name="flights" placeholder="Flights" required><br>
             <input type="text" name="hotels" placeholder="Hotels" required><br>
             <input type="number" name="total_cost" placeholder="Total Cost" required><br>
@@ -159,13 +176,10 @@ $conn->close();
             <input type="submit" name="submit" value="Create Itinerary">
         </form>
 
-        <?php if (!empty($clientName)): ?>
-            <div>
-                <strong>Client ID:</strong> <?php echo $clientID; ?><br>
-                <strong>Client Name:</strong> <?php echo $clientName; ?>
-            </div>
-        <?php elseif (!empty($clientID)): ?>
-            <div class="error-message">Client not found.</div>
+        <?php if (isset($successMessage)): ?>
+            <div class="success-message"><?php echo $successMessage; ?></div>
+        <?php elseif (isset($errorMessage)): ?>
+            <div class="error-message"><?php echo $errorMessage; ?></div>
         <?php endif; ?>
     </div>
 </body>
