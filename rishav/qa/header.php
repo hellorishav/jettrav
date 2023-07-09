@@ -34,32 +34,48 @@
             margin-left: 20px;
             text-decoration: none;
             color: #333;
+            font-weight: 500; /* Added font weight */
+            transition: color 0.3s ease; /* Added transition effect */
         }
 
         .header-links a:hover {
             color: #1976d2;
         }
 
-        /* Additional styles */
-
-        body {
-            margin-top: 60px; /* Add top margin to the body to avoid overlapping with the header */
+        .login-button {
+            margin-left: 20px;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            background-color: #1976d2;
+            color: #fff;
+            font-weight: 500;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
         }
 
-        .container {
-            margin-top: 120px; /* Add top margin to the container to avoid overlapping with the header */
+        .login-button:hover {
+            background-color: #1565c0;
         }
-        
     </style>
 </head>
 <body>
     <div class="header">
         <div class="logo">Jettrav</div>
         <div class="header-links">
-            <a href="login.php">Login</a>
+            <a href="dashboard.php">Dashboard</a> <!-- Changed the login link to Dashboard -->
             <a href="survey.php">Survey</a>
             <a href="view.php">View Itinerary</a>
             <a href="itinerary.php">Create Itinerary</a>
+            <?php
+            if (isset($_SESSION['username'])) {
+                // If the 'username' session variable is set, show the logout button
+                echo '<a href="logout.php">Logout</a>';
+            } else {
+                // If the 'username' session variable is not set, show the login button
+                echo '<a href="login.php" class="login-button">Login</a>';
+            }
+            ?>
         </div>
     </div>
 </body>
