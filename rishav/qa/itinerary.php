@@ -32,11 +32,16 @@ if (isset($_POST['clientID'])) {
     if ($clientResult && $clientResult->num_rows > 0) {
         $clientData = $clientResult->fetch_assoc();
         $clientName = $clientData['name'];
+    } else {
+        // Client not found
+        $clientID = "";
     }
 }
 
 // Store itinerary details if the form is submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
+    // Get input values from the form
+    $clientID = $_POST['clientID'];
     $flights = $_POST['flights'];
     $hotels = $_POST['hotels'];
     $totalCost = $_POST['total_cost'];
@@ -46,8 +51,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     $staff = $_SESSION['username'];
 
     // Insert the itinerary details into the itineraries table
-    $insertQuery = "INSERT INTO itineraries (flights, hotels, total_cost, departure, return_date, additional_details, clientID, staff)
-                    VALUES ('$flights', '$hotels', '$totalCost', '$departure', '$returnDate', '$additionalDetails', '$clientID', '$staff')";
+    $insertQuery = "INSERT INTO itineraries (clientID, flights, hotels, total_cost, departure, return_date, additional_details, staff)
+                    VALUES ('$clientID', '$flights', '$hotels', '$totalCost', '$departure', '$returnDate', '$additionalDetails', '$staff')";
 
     if ($conn->query($insertQuery) === TRUE) {
         echo '<div class="success-message">Itinerary created successfully.</div>';
@@ -142,25 +147,24 @@ $conn->close();
     <div class="container">
         <h1>Create Itinerary</h1>
 
+        <form method="post" action="">
+            <input type="text" name="clientID" placeholder="Client ID" value="<?php echo $clientID; ?>" required><br>
+            <input type="text" name="flights" placeholder="Flights" required><br>
+            <input type="text" name="hotels" placeholder="Hotels" required><br>
+            <input type="number" name="total_cost" placeholder="Total Cost" required><br>
+            <input type="text" name="departure" placeholder="Departure" required><br>
+            <input type="text" name="return_date" placeholder="Return Date" required><br>
+            <textarea name="additional_details" rows="3" placeholder="Additional Details"></textarea><br>
+
+            <input type="submit" name="submit" value="Create Itinerary">
+        </form>
+
         <?php if (!empty($clientName)): ?>
             <div>
                 <strong>Client ID:</strong> <?php echo $clientID; ?><br>
                 <strong>Client Name:</strong> <?php echo $clientName; ?>
             </div>
-            <br>
-            <form method="post" action="">
-                <input type="hidden" name="clientID" value="<?php echo $clientID; ?>">
-
-                <input type="text" name="flights" placeholder="Flights" required><br>
-                <input type="text" name="hotels" placeholder="Hotels" required><br>
-                <input type="number" name="total_cost" placeholder="Total Cost" required><br>
-                <input type="text" name="departure" placeholder="Departure" required><br>
-                <input type="text" name="return_date" placeholder="Return Date" required><br>
-                <textarea name="additional_details" rows="3" placeholder="Additional Details"></textarea><br>
-
-                <input type="submit" name="submit" value="Create Itinerary">
-            </form>
-        <?php else: ?>
+        <?php elseif (!empty($clientID)): ?>
             <div class="error-message">Client not found.</div>
         <?php endif; ?>
     </div>
