@@ -1,7 +1,4 @@
-<!DOCTYPE html>
-<html>
 <head>
-    <title>Jettrav</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap">
     <style>
         body {
@@ -93,7 +90,6 @@
         }
     </style>
 </head>
-<body>
     <div class="header">
         <div class="logo">Jettrav</div>
         <div class="header-links">
@@ -103,5 +99,3 @@
             <a href="itinerary.php">Create Itinerary</a>
         </div>
     </div>
-</body>
-</html>
