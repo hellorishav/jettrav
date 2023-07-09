@@ -151,7 +151,6 @@ if (isset($_SESSION['username'])) {
             </div>
 
             <?php
-            // Fetch leads data
             $sql = "SELECT * FROM leads";
             $result = $conn->query($sql);
 
