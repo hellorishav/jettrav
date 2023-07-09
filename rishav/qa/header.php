@@ -25,6 +25,13 @@
             font-size: 24px;
             color: #333;
             text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 24px;
+            margin-right: 10px;
         }
 
         .header-links {
@@ -70,7 +77,10 @@
 </head>
 <body>
     <div class="header">
-        <a href="home.php" class="logo">Jettrav</a>
+        <a href="home.php" class="logo">
+            <img src="jettrav.svg" alt="Jettrav Logo">
+            Jettrav
+        </a>
         <div class="header-links">
             <a href="dashboard.php">Dashboard</a>
             <a href="survey.php">Survey</a>
