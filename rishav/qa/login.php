@@ -25,7 +25,7 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             text-align: center;
             overflow-y: auto;
-            max-height: 80vh; /* Adjust the max-height as needed */
+            max-height: 80vh;
         }
 
         h1 {
@@ -175,6 +175,8 @@
         <div id="create-account-tab" class="tab-content">
             <h2>Create Account</h2>
             <?php
+            session_start(); // Start the session
+
             $servername = "localhost";
             $username = "u947421468_jettrav";
             $password = "Jettrav@capstone1";
@@ -245,7 +247,9 @@
                 $loginResult = $conn->query($loginQuery);
 
                 if ($loginResult && $loginResult->num_rows > 0) {
-                    echo '<div class="success-message">Login successful.</div>';
+                    $_SESSION['username'] = $username; // Set the session variable
+                    header("Location: dashboard.php"); // Redirect to dashboard.php
+                    exit;
                 } else {
                     echo '<div class="error-message">Invalid username or password.</div>';
                 }
