@@ -36,6 +36,8 @@ if (isset($_GET['clientID'])) {
 $conn->close();
 ?>
 
+<?php include 'header.php'; ?>
+
 <!DOCTYPE html>
 <html>
 <head>
