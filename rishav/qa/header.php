@@ -23,8 +23,8 @@
         .logo {
             font-weight: bold;
             font-size: 24px;
-            color: #333; /* Added color */
-            text-decoration: none; /* Added text decoration */
+            color: #333;
+            text-decoration: none;
         }
 
         .header-links {
@@ -37,6 +37,7 @@
             text-decoration: none;
             color: #333;
             font-weight: 500;
+            font-size: 18px; /* Increased font size */
             transition: color 0.3s ease;
         }
 
@@ -46,18 +47,20 @@
 
         .login-button {
             margin-left: 20px;
-            padding: 8px 16px;
+            padding: 12px 20px; /* Adjusted padding */
             border: none;
             border-radius: 4px;
-            background-color: #1976d2;
+            background-color: #2196f3;
             color: #fff;
             font-weight: 500;
             text-decoration: none;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s;
+            font-size: 16px; /* Matched font size */
+            cursor: pointer;
         }
 
         .login-button:hover {
-            background-color: #1565c0;
+            background-color: #1976d2;
         }
 
         .container {
@@ -69,7 +72,7 @@
     <div class="header">
         <a href="home.php" class="logo">Jettrav</a>
         <div class="header-links">
-            <a href="dashboard.php" style="color: #1976d2;">Dashboard</a>
+            <a href="dashboard.php">Dashboard</a>
             <a href="survey.php">Survey</a>
             <a href="view.php">View Itinerary</a>
             <a href="itinerary.php">Create Itinerary</a>
@@ -79,7 +82,7 @@
                 echo '<a href="logout.php" class="login-button">Logout</a>';
             } else {
                 // If the 'username' session variable is not set, show the login button
-                echo '<a href="login.php" class="login-button">Login</a>';
+                echo '<a href="login.php" class="login-button" style="padding: 12px 20px;">Login</a>';
             }
             ?>
         </div>
