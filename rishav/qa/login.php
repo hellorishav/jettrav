@@ -58,8 +58,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
         // Set the session variable from the "username" field
         $_SESSION['username'] = $username;
 
-        // Redirect to dashboard.php
-        header("Location: dashboard.php");
+        // Redirect to welcome.php
+        header("Location: welcome.php");
         exit();
     } else {
         echo '<div class="error-message">Invalid username or password.</div>';
