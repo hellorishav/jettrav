@@ -51,7 +51,7 @@
             border: none;
             border-radius: 4px;
             background-color: #2196f3;
-            color: #fff;
+            color: #fff !important;
             font-weight: 500;
             text-decoration: none;
             transition: background-color 0.3s;
