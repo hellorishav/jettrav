@@ -25,6 +25,25 @@ $clientEmail = "";
 $successMessage = "";
 $errorMessage = "";
 
+// Check if client ID is submitted
+if (isset($_POST['retrieve-client'])) {
+    $clientID = $_POST['clientID'];
+
+    // Fetch client details from the leads table
+    $getClientQuery = "SELECT * FROM leads WHERE id = '$clientID'";
+    $clientResult = $conn->query($getClientQuery);
+
+    if ($clientResult && $clientResult->num_rows > 0) {
+        $clientData = $clientResult->fetch_assoc();
+        $clientName = $clientData['name'];
+        $clientPhone = $clientData['phone'];
+        $clientEmail = $clientData['email'];
+    } else {
+        // Client not found
+        $clientID = "";
+    }
+}
+
 // Store itinerary details if the form is submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     // Get input values from the form
@@ -43,17 +62,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
 
     if ($conn->query($insertQuery) === TRUE) {
         $successMessage = 'Itinerary created successfully.';
-        
-        // Fetch client details from the leads table
-        $getClientQuery = "SELECT * FROM leads WHERE id = '$clientID'";
-        $clientResult = $conn->query($getClientQuery);
-
-        if ($clientResult && $clientResult->num_rows > 0) {
-            $clientData = $clientResult->fetch_assoc();
-            $clientName = $clientData['name'];
-            $clientPhone = $clientData['phone'];
-            $clientEmail = $clientData['email'];
-        }
     } else {
         $errorMessage = 'Error creating itinerary: ' . $conn->error;
     }
@@ -61,8 +69,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
 
 $conn->close();
 ?>
-<!-- Rest of your HTML code -->
-
 <!DOCTYPE html>
 <html>
 <head>
