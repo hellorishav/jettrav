@@ -44,6 +44,17 @@ if (isset($_POST['retrieve-client'])) {
     }
 }
 
+// Get user's name from credentials table
+$name = "";
+$username = $_SESSION['username'];
+$getUserNameQuery = "SELECT name FROM credentials WHERE username = '$username'";
+$userResult = $conn->query($getUserNameQuery);
+
+if ($userResult && $userResult->num_rows > 0) {
+    $userData = $userResult->fetch_assoc();
+    $name = $userData['name'];
+}
+
 // Store itinerary details if the form is submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     // Get input values from the form
@@ -147,10 +158,43 @@ $conn->close();
             color: #ff0000;
             margin-bottom: 10px;
         }
+
+        .logout-container {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .logout-button {
+            background-color: #2196f3;
+            color: #fff;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .logout-button:hover {
+            background-color: #1976d2;
+        }
+
+        .welcome-message {
+            font-size: 14px;
+            margin-right: 10px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
+        <div class="logout-container">
+            <span class="welcome-message">Welcome, <?php echo $name; ?>!</span>
+            <form action="logout.php" method="post">
+                <button class="logout-button" type="submit">Logout</button>
+            </form>
+        </div>
         <h1>Create Itinerary</h1>
 
         <?php if (empty($clientName)): ?>
