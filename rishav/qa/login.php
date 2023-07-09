@@ -103,7 +103,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
         }
 
         input[type="text"],
-        input[type="password"] {
+        input[type="password"],
+        input[type="email"] {
             width: 100%;
             padding: 12px;
             margin-bottom: 20px;
@@ -116,11 +117,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
         }
 
         input[type="text"]:focus,
-        input[type="password"]:focus {
+        input[type="password"]:focus,
+        input[type="email"]:focus {
             background-color: #e0e0e0;
         }
 
-        input[type="submit"] {
+        input[type="submit"],
+        button {
             background-color: #2196f3;
             color: #fff;
             padding: 12px 20px;
@@ -131,7 +134,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
             transition: background-color 0.3s;
         }
 
-        input[type="submit"]:hover {
+        input[type="submit"]:hover,
+        button:hover {
             background-color: #1976d2;
         }
 
@@ -149,31 +153,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
 
         .material-icons {
             vertical-align: middle;
-        }
-
-        .tab-links {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .tab-link {
-            flex-grow: 1;
-            padding: 10px;
-            background-color: #eee;
-            border-radius: 4px 4px 0 0;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .tab-link:hover {
-            background-color: #ddd;
-        }
-
-        .tab-link.active {
-            background-color: #fff;
         }
 
         .tab-content {
@@ -199,35 +178,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
     </style>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Set the login tab as active by default
-            document.querySelector('.tab-link[data-tab="login-tab"]').classList.add('active');
-            document.getElementById('login-tab').classList.add('active');
-
-            // Add event listener to tab links for tab switching
-            var tabLinks = document.querySelectorAll('.tab-link');
-            tabLinks.forEach(function(link) {
-                link.addEventListener('click', function() {
-                    var tabName = this.dataset.tab;
-                    switchTab(tabName);
-                });
-            });
+            switchTab('login-tab');
         });
 
         function switchTab(tabName) {
-            var tabLinks = document.querySelectorAll('.tab-link');
             var tabContents = document.querySelectorAll('.tab-content');
 
-            // Remove active class from all tab links and contents
-            tabLinks.forEach(function(link) {
-                link.classList.remove('active');
-            });
-
+            // Remove active class from all tab contents
             tabContents.forEach(function(content) {
                 content.classList.remove('active');
             });
 
-            // Add active class to the clicked tab link and corresponding content
-            document.querySelector('.tab-link[data-tab="' + tabName + '"]').classList.add('active');
+            // Add active class to the specified tab content
             document.getElementById(tabName).classList.add('active');
         }
     </script>
@@ -235,11 +197,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
 <body>
     <div class="container">
         <h1>Authentication System</h1>
-
-        <ul class="tab-links">
-            <li><a class="tab-link" href="#" data-tab="create-account-tab">Create Account</a></li>
-            <li><a class="tab-link" href="#" data-tab="login-tab">Login</a></li>
-        </ul>
 
         <div id="create-account-tab" class="tab-content">
             <h2>Create Account</h2>
@@ -249,29 +206,65 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
                     <input type="text" id="name" name="name" required>
                 </div>
                 <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username" required>
+                    <label for="username">Email</label>
+                    <input type="email" id="username" name="username" required>
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
                     <input type="password" id="password" name="password" required>
                 </div>
-                <input type="submit" name="create-account" value="Create Account">
-            </form>
+                <div class="form-group">
+                    <input type="submit" name="create-account" value="Create Account">
+                </div>
+            </form>            
+            <div class="form-group">
+                <button type="button" onclick="switchTab('login-tab')">Login</button>
+            </div>
         </div>
 
         <div id="login-tab" class="tab-content">
             <h2>Login</h2>
+            <?php
+            if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
+                $username = $_POST['username'];
+                $password = $_POST['password'];
+
+                // Hash the entered password for comparison
+                $hashedPassword = hash('sha256', $password);
+
+                // Check if the username and hashed password match in the database
+                $loginQuery = "SELECT * FROM credentials WHERE username = '$username' AND password = '$hashedPassword'";
+                $loginResult = $conn->query($loginQuery);
+
+                if ($loginResult && $loginResult->num_rows > 0) {
+                    echo '<div class="success-message">Login successful. Redirecting to Dashboard...</div>';
+
+                    // Set the session variable from the "username" field
+                    $_SESSION['username'] = $username;
+
+                    // Redirect to welcome.php
+                    header("Location: welcome.php");
+                    exit();
+                } else {
+                    echo '<div class="error-message">Invalid username or password.</div>';
+                }
+            }
+            ?>
             <form method="post" action="">
                 <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username" required>
+                    <label for="username">Email</label>
+                    <input type="email" id="username" name="username" required>
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
                     <input type="password" id="password" name="password" required>
                 </div>
-                <input type="submit" name="login" value="Login">
+                <div class="form-group">
+                    <input type="submit" name="login" value="Login">
+                </div>
+                <div class="form-group">
+                    <button type="button" onclick="switchTab('create-account-tab')">Create an Account</button>
+                </div>
             </form>
         </div>
     </div>
