@@ -160,7 +160,7 @@ $conn->close();
             </form>
 
             <?php if (!empty($clientID)): ?>
-                <div class="error-message">Client not found.</div>
+
             <?php endif; ?>
         <?php else: ?>
             <div>
