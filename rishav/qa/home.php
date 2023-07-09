@@ -50,8 +50,8 @@
         }
     </style>
 </head>
-<?php include 'header.php'; ?>
 <body>
+<?php include 'header.php'; ?>
     <div class="container">
         <div class="card">
             <h1>Welcome to the Website!</h1>
