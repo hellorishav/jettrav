@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<?php include 'header.php'; ?>
 <head>
     <title>JetTrav - Trip Information</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap">
