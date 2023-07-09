@@ -245,7 +245,7 @@
                 $loginResult = $conn->query($loginQuery);
 
                 if ($loginResult && $loginResult->num_rows > 0) {
-                    echo '<div class="success-message">Login successful. Redirecting to Dashboard...</div>';
+                   // echo '<div class="success-message">Login successful. Redirecting to Dashboard...</div>';
 
                     // Start a new session or resume the existing one
                     session_start();
@@ -254,7 +254,7 @@
                     $_SESSION['username'] = $username;
 
                     // Redirect to dashboard.php
-                    header("Location: https://jettrav.rishavkumar.io/rishav/qa/dashboard.php");
+                    header("Location: dashboard.php");
                     exit();
                 } else {
                     echo '<div class="error-message">Invalid username or password.</div>';
