@@ -37,11 +37,11 @@
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             text-align: center;
-            cursor: pointer; /* Added cursor style */
+            cursor: pointer;
         }
 
         .card:hover {
-            background-color: #f0f0f0; /* Added hover effect */
+            background-color: #f0f0f0;
         }
 
         .card i {
@@ -55,6 +55,14 @@
             margin-bottom: 20px;
             color: #333;
         }
+
+        .container a {
+            text-decoration: none; /* Remove underlines */
+        }
+
+        .container a:hover {
+            text-decoration: none; /* Remove underlines on hover */
+        }
     </style>
 </head>
 <body>
@@ -65,7 +73,7 @@
                 <h1>Login</h1>
             </a>
             <a href="survey.php" class="card">
-                <i class="material-icons">assessment</i> <!-- Updated icon name -->
+                <i class="material-icons">assessment</i>
                 <h1>Survey</h1>
             </a>
             <a href="view.php" class="card">
