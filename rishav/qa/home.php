@@ -37,6 +37,11 @@
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             text-align: center;
+            cursor: pointer; /* Added cursor style */
+        }
+
+        .card:hover {
+            background-color: #f0f0f0; /* Added hover effect */
         }
 
         .card i {
@@ -50,48 +55,27 @@
             margin-bottom: 20px;
             color: #333;
         }
-
-        .card a {
-            display: block;
-            margin-bottom: 12px;
-            padding: 12px 0;
-            background-color: #2196f3;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 4px;
-            font-size: 18px;
-            transition: background-color 0.3s;
-            width: 200px;
-        }
-
-        .card a:hover {
-            background-color: #1976d2;
-        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="card-container">
-            <div class="card">
+            <a href="login.php" class="card">
                 <i class="material-icons">login</i>
                 <h1>Login</h1>
-                <a href="login.php">Go to Login</a>
-            </div>
-            <div class="card">
-                <i class="material-icons">survey</i>
+            </a>
+            <a href="survey.php" class="card">
+                <i class="material-icons">assessment</i> <!-- Updated icon name -->
                 <h1>Survey</h1>
-                <a href="survey.php">Take Survey</a>
-            </div>
-            <div class="card">
+            </a>
+            <a href="view.php" class="card">
                 <i class="material-icons">visibility</i>
                 <h1>View Itinerary</h1>
-                <a href="view.php">View Itinerary</a>
-            </div>
-            <div class="card">
+            </a>
+            <a href="itinerary.php" class="card">
                 <i class="material-icons">add_circle</i>
                 <h1>Create Itinerary</h1>
-                <a href="itinerary.php">Create Itinerary</a>
-            </div>
+            </a>
         </div>
     </div>
 </body>
