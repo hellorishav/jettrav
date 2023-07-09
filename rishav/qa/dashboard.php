@@ -1,3 +1,37 @@
+<?php
+session_start();
+
+$servername = "localhost";
+$username = "u947421468_jettrav";
+$password = "Jettrav@capstone1";
+$dbname = "u947421468_jettrav";
+
+// Check if the user is authenticated
+if (isset($_SESSION['username'])) {
+    $authenticated = true;
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    $username = $_SESSION['username'];
+
+    // Fetch user's name from the credentials table
+    $getNameQuery = "SELECT name FROM credentials WHERE username = '$username'";
+    $nameResult = $conn->query($getNameQuery);
+
+    if ($nameResult && $nameResult->num_rows > 0) {
+        $row = $nameResult->fetch_assoc();
+        $name = $row['name'];
+    } else {
+        $name = '';
+    }
+} else {
+    $authenticated = false;
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -91,67 +125,67 @@
     </script>
 </head>
 <body>
-    <div class="container">
-        <h1>Leads Dashboard</h1>
+    <?php if ($authenticated): ?>
+        <div class="container">
+            <div style="text-align: right;">
+                Welcome, <?php echo $name; ?>!
+                <form method="post" action="logout.php" style="display: inline-block;">
+                    <input type="submit" name="logout" value="Log out">
+                </form>
+            </div>
+            <h1>Leads Dashboard</h1>
 
-        <div class="search-container">
-            <input type="text" id="search-input" placeholder="Start typing to search..." onkeyup="searchLeads()">
-        </div>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Start typing to search..." onkeyup="searchLeads()">
+            </div>
 
-        <?php
-        $servername = "localhost";
-        $username = "u947421468_jettrav";
-        $password = "Jettrav@capstone1";
-        $dbname = "u947421468_jettrav";
+            <?php
+            // Fetch leads data
+            $sql = "SELECT * FROM leads";
+            $result = $conn->query($sql);
 
-        // Create connection
-        $conn = new mysqli($servername, $username, $password, $dbname);
-
-        // Check connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
-
-        $sql = "SELECT * FROM leads";
-        $result = $conn->query($sql);
-
-        if ($result && $result->num_rows > 0) {
-            echo '<table id="leads-table">';
-            echo '<tr>';
-            echo '<th>ID</th>';
-            echo '<th>Name</th>';
-            echo '<th>Email</th>';
-            echo '<th>Phone</th>';
-            echo '<th>From City</th>';
-            echo '<th>Destination City</th>';
-            echo '<th>Departure Date</th>';
-            echo '<th>Return Date</th>';
-            echo '<th>Citizenship</th>';
-            echo '<th>Additional Details</th>';
-            echo '</tr>';
-
-            while ($row = $result->fetch_assoc()) {
+            if ($result && $result->num_rows > 0) {
+                echo '<table id="leads-table">';
                 echo '<tr>';
-                echo '<td>' . $row['id'] . '</td>';
-                echo '<td>' . $row['name'] . '</td>';
-                echo '<td>' . $row['email'] . '</td>';
-                echo '<td>' . $row['phone'] . '</td>';
-                echo '<td>' . $row['from_city'] . '</td>';
-                echo '<td>' . $row['destination_city'] . '</td>';
-                echo '<td>' . $row['departure_date'] . '</td>';
-                echo '<td>' . $row['return_date'] . '</td>';
-                echo '<td>' . $row['citizenship'] . '</td>';
-                echo '<td>' . $row['additional_details'] . '</td>';
+                echo '<th>ID</th>';
+                echo '<th>Name</th>';
+                echo '<th>Email</th>';
+                echo '<th>Phone</th>';
+                echo '<th>From City</th>';
+                echo '<th>Destination City</th>';
+                echo '<th>Departure Date</th>';
+                echo '<th>Return Date</th>';
+                echo '<th>Citizenship</th>';
+                echo '<th>Additional Details</th>';
                 echo '</tr>';
+
+                while ($row = $result->fetch_assoc()) {
+                    echo '<tr>';
+                    echo '<td>' . $row['id'] . '</td>';
+                    echo '<td>' . $row['name'] . '</td>';
+                    echo '<td>' . $row['email'] . '</td>';
+                    echo '<td>' . $row['phone'] . '</td>';
+                    echo '<td>' . $row['from_city'] . '</td>';
+                    echo '<td>' . $row['destination_city'] . '</td>';
+                    echo '<td>' . $row['departure_date'] . '</td>';
+                    echo '<td>' . $row['return_date'] . '</td>';
+                    echo '<td>' . $row['citizenship'] . '</td>';
+                    echo '<td>' . $row['additional_details'] . '</td>';
+                    echo '</tr>';
+                }
+
+                echo '</table>';
+            } else {
+                echo 'No leads found.';
             }
 
-            echo '</table>';
-        } else {
-            echo 'No leads found.';
-        }
-
-        $conn->close();
-        ?>
-    </div>
+            $conn->close();
+            ?>
+        </div>
+    <?php else: ?>
+        <div class="container">
+            User not authenticated.
+        </div>
+    <?php endif; ?>
 </body>
 </html>
