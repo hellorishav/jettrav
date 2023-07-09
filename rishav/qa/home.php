@@ -50,6 +50,7 @@
         }
     </style>
 </head>
+<?php include 'header.php'; ?>
 <body>
     <div class="container">
         <div class="card">
