@@ -77,6 +77,7 @@
             <a href="view.php">View Itinerary</a>
             <a href="itinerary.php">Create Itinerary</a>
             <?php
+            session_start();
             if (isset($_SESSION['username'])) {
                 // If the 'username' session variable is set, show the logout button
                 echo '<a href="logout.php" class="login-button">Logout</a>';
