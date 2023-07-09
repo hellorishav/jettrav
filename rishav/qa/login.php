@@ -254,7 +254,7 @@
                     $_SESSION['username'] = $username;
 
                     // Redirect to dashboard.php
-                    header("Location: dashboard.php");
+                    header("Location: https://jettrav.rishavkumar.io/rishav/qa/dashboard.php");
                     exit();
                 } else {
                     echo '<div class="error-message">Invalid username or password.</div>';
