@@ -78,8 +78,7 @@
 <body>
     <div class="header">
         <a href="home.php" class="logo">
-            <img src="jettrav.svg" alt="Jettrav Logo">
-            Jettrav
+            <img src="logo.svg" alt="Jettrav Logo">
         </a>
         <div class="header-links">
             <a href="dashboard.php">Dashboard</a>
