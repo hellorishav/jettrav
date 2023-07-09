@@ -8,9 +8,8 @@ $dbname = "u947421468_jettrav";
 
 // Check if the user is authenticated
 if (!isset($_SESSION['username'])) {
-    $authenticated = false;
-} else {
-    $authenticated = true;
+    header("Location: login.php");
+    exit();
 }
 
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -233,11 +232,5 @@ $conn->close();
             <?php endif; ?>
         <?php endif; ?>
     </div>
-    <?php if (!$authenticated): ?>
-    <div class="container">
-            <b>User not authenticated.</b><br><br><br>
-            <a href="login.php" class="login-button">Login</a>
-        </div>
-    <?php endif; ?>
 </body>
 </html>
