@@ -75,11 +75,11 @@
 </head>
 <body>
     <div class="container">
-        <img src="logo.svg" class="logo1" alt="Logo"> <!-- Add logo.svg -->
+        <img src="logo.svg" class="logo1" alt="Logo">
         <div class="card-container">
-            <a href="login.php" class="card">
-                <i class="material-icons">login</i>
-                <h1>Login</h1>
+            <a href="dashboard.php" class="card">
+                <i class="material-icons">dashboard</i>
+                <h1>Dashboard</h1>
             </a>
             <a href="survey.php" class="card">
                 <i class="material-icons">assessment</i>
