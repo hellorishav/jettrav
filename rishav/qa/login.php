@@ -73,10 +73,162 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <style>
-        /* CSS styles omitted for brevity */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 400px;
+            width: 100%;
+            padding: 40px;
+            background-color: #fff;
+            border-radius: 4px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            overflow-y: auto;
+            max-height: 80vh;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 40px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: #f5f5f5;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            box-sizing: border-box;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            background-color: #e0e0e0;
+        }
+
+        input[type="submit"] {
+            background-color: #2196f3;
+            color: #fff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #1976d2;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            color: #888;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .material-icons {
+            vertical-align: middle;
+        }
+
+        .tab-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .tab-link {
+            flex-grow: 1;
+            padding: 10px;
+            background-color: #eee;
+            border-radius: 4px 4px 0 0;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .tab-link:hover {
+            background-color: #ddd;
+        }
+
+        .tab-link.active {
+            background-color: #fff;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 0 4px 4px 4px;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .error-message {
+            color: #ff0000;
+            margin-bottom: 10px;
+        }
+
+        .success-message {
+            color: #009900;
+            margin-bottom: 10px;
+        }
     </style>
     <script>
-        // JavaScript code omitted for brevity
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set the login tab as active by default
+            document.querySelector('.tab-link[data-tab="login-tab"]').classList.add('active');
+            document.getElementById('login-tab').classList.add('active');
+
+            // Add event listener to tab links for tab switching
+            var tabLinks = document.querySelectorAll('.tab-link');
+            tabLinks.forEach(function(link) {
+                link.addEventListener('click', function() {
+                    var tabName = this.dataset.tab;
+                    switchTab(tabName);
+                });
+            });
+        });
+
+        function switchTab(tabName) {
+            var tabLinks = document.querySelectorAll('.tab-link');
+            var tabContents = document.querySelectorAll('.tab-content');
+
+            // Remove active class from all tab links and contents
+            tabLinks.forEach(function(link) {
+                link.classList.remove('active');
+            });
+
+            tabContents.forEach(function(content) {
+                content.classList.remove('active');
+            });
+
+            // Add active class to the clicked tab link and corresponding content
+            document.querySelector('.tab-link[data-tab="' + tabName + '"]').classList.add('active');
+            document.getElementById(tabName).classList.add('active');
+        }
     </script>
 </head>
 <body>
