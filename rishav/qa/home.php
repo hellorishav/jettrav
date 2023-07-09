@@ -15,9 +15,16 @@
 
         .container {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
+        }
+
+        .logo {
+            width: 70%;
+            max-width: 300px; /* Limit maximum width */
+            margin-bottom: 40px; /* Add spacing between logo and cards */
         }
 
         .card-container {
@@ -57,16 +64,17 @@
         }
 
         .container a {
-            text-decoration: none; /* Remove underlines */
+            text-decoration: none;
         }
 
         .container a:hover {
-            text-decoration: none; /* Remove underlines on hover */
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <img src="logo.svg" class="logo" alt="Logo"> <!-- Add logo.svg -->
         <div class="card-container">
             <a href="login.php" class="card">
                 <i class="material-icons">login</i>
