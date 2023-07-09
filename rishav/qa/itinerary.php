@@ -8,8 +8,8 @@ $dbname = "u947421468_jettrav";
 
 // Check if the user is authenticated
 if (!isset($_SESSION['username'])) {
-    echo '<div class="container">User not authenticated.</div>';
-    die();
+    header("Location: login.php");
+    exit();
 }
 
 $conn = new mysqli($servername, $username, $password, $dbname);
