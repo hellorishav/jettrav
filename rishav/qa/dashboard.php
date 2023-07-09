@@ -100,6 +100,17 @@ if (isset($_SESSION['username'])) {
         .search-container input[type="text"]:focus {
             background-color: #e0e0e0;
         }
+        
+        input[type="submit"] {
+            background-color: #2196f3;
+            color: #fff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
     </style>
     <script>
         function searchLeads() {
