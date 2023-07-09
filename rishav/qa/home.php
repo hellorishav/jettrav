@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<?php include 'header.php'; ?>
 <head>
     <title>Home</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap">
@@ -51,7 +52,6 @@
     </style>
 </head>
 <body>
-<?php include 'header.php'; ?>
     <div class="container">
         <div class="card">
             <h1>Welcome to the Website!</h1>
