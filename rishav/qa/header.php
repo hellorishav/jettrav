@@ -13,6 +13,11 @@
             padding: 20px;
             background-color: #fff;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
         }
 
         .logo {
@@ -33,6 +38,12 @@
 
         .header-links a:hover {
             color: #1976d2;
+        }
+
+        /* Additional styles */
+
+        body {
+            margin-top: 60px; /* Add top margin to the body to avoid overlapping with the header */
         }
     </style>
 </head>
