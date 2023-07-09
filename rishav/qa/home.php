@@ -56,6 +56,8 @@
             <h1>Welcome to the Website!</h1>
             <a href="login.php">Login</a>
             <a href="survey.php">Survey</a>
+            <a href="view.php">View Itinerary</a>
+            <a href="itinerary.php">Create Itinerary</a>
         </div>
     </div>
 </body>
