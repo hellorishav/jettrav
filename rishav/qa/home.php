@@ -19,7 +19,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            margin-top: 80px !important;
+            margin-top: 60px !important;
         }
 
         .logo1 {
