@@ -21,7 +21,7 @@
             height: 100vh;
         }
 
-        .logo {
+        .logo1 {
             width: 70%;
             max-width: 300px; /* Limit maximum width */
             margin-bottom: 40px; /* Add spacing between logo and cards */
@@ -74,7 +74,7 @@
 </head>
 <body>
     <div class="container">
-        <img src="logo.svg" class="logo" alt="Logo"> <!-- Add logo.svg -->
+        <img src="logo.svg" class="logo1" alt="Logo"> <!-- Add logo.svg -->
         <div class="card-container">
             <a href="login.php" class="card">
                 <i class="material-icons">login</i>
