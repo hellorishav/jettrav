@@ -151,35 +151,40 @@ $conn->close();
     <div class="container">
         <h1>Create Itinerary</h1>
 
-        <form method="post" action="">
-            <input type="text" name="clientID" placeholder="Client ID" value="<?php echo $clientID; ?>" required>
-            <input type="submit" name="retrieve-client" value="RetrieveClient">
+        <?php if (empty($clientName)): ?>
+            <form method="post" action="">
+                <input type="text" name="clientID" placeholder="Client ID" value="<?php echo $clientID; ?>" required>
+                <input type="submit" name="retrieve-client" value="Retrieve Client">
+            </form>
 
-            <?php if (!empty($clientName)): ?>
-                <div>
-                    <strong>Client ID:</strong> <?php echo $clientID; ?><br>
-                    <strong>Client Name:</strong> <?php echo $clientName; ?><br>
-                    <strong>Client Phone:</strong> <?php echo $clientPhone; ?><br>
-                    <strong>Client Email:</strong> <?php echo $clientEmail; ?>
-                </div>
-            <?php elseif (!empty($clientID)): ?>
+            <?php if (!empty($clientID)): ?>
                 <div class="error-message">Client not found.</div>
             <?php endif; ?>
+        <?php else: ?>
+            <div>
+                <strong>Client ID:</strong> <?php echo $clientID; ?><br>
+                <strong>Client Name:</strong> <?php echo $clientName; ?><br>
+                <strong>Client Phone:</strong> <?php echo $clientPhone; ?><br>
+                <strong>Client Email:</strong> <?php echo $clientEmail; ?>
+            </div>
 
-            <input type="text" name="flights" placeholder="Flights" required><br>
-            <input type="text" name="hotels" placeholder="Hotels" required><br>
-            <input type="number" name="total_cost" placeholder="Total Cost" required><br>
-            <input type="text" name="departure" placeholder="Departure" required><br>
-            <input type="text" name="return_date" placeholder="Return Date" required><br>
-            <textarea name="additional_details" rows="3" placeholder="Additional Details"></textarea><br>
+            <form method="post" action="">
+                <input type="hidden" name="clientID" value="<?php echo $clientID; ?>">
+                <input type="text" name="flights" placeholder="Flights" required><br>
+                <input type="text" name="hotels" placeholder="Hotels" required><br>
+                <input type="number" name="total_cost" placeholder="Total Cost" required><br>
+                <input type="text" name="departure" placeholder="Departure" required><br>
+                <input type="text" name="return_date" placeholder="Return Date" required><br>
+                <textarea name="additional_details" rows="3" placeholder="Additional Details"></textarea><br>
 
-            <input type="submit" name="submit" value="Create Itinerary">
-        </form>
+                <input type="submit" name="submit" value="Create Itinerary">
+            </form>
 
-        <?php if (isset($successMessage)): ?>
-            <div class="success-message"><?php echo $successMessage; ?></div>
-        <?php elseif (isset($errorMessage)): ?>
-            <div class="error-message"><?php echo $errorMessage; ?></div>
+            <?php if (isset($successMessage)): ?>
+                <div class="success-message"><?php echo $successMessage; ?></div>
+            <?php elseif (isset($errorMessage)): ?>
+                <div class="error-message"><?php echo $errorMessage; ?></div>
+            <?php endif; ?>
         <?php endif; ?>
     </div>
 </body>
