@@ -192,10 +192,7 @@ $conn->close();
 <body>
     <div class="container">
         <div class="logout-container">
-            <span class="welcome-message">Welcome, <?php echo $name; ?>!</span>
-            <form action="logout.php" method="post">
-                <button class="logout-button" type="submit">Logout</button>
-            </form>
+            <span class="welcome-message">Logged in as <?php echo $name; ?>.</span>
         </div>
         <h1>Create Itinerary</h1>
 

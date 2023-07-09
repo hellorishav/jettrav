@@ -140,10 +140,7 @@ if (isset($_SESSION['username'])) {
     <?php if ($authenticated): ?>
         <div class="container">
             <div style="text-align: right;">
-                Welcome, <b><?php echo $name; ?></b>!
-                <form method="post" action="logout.php" style="display: inline-block;">
-                    &nbsp&nbsp&nbsp<input type="submit" name="logout" value="Log out">
-                </form>
+                Logged in as <b><?php echo $name; ?></b>.
             </div>
             <h1>Leads Dashboard</h1>
 
