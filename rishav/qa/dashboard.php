@@ -100,7 +100,7 @@ if (isset($_SESSION['username'])) {
         .search-container input[type="text"]:focus {
             background-color: #e0e0e0;
         }
-        
+
         input[type="submit"] {
             background-color: #2196f3;
             color: #fff;
@@ -139,9 +139,9 @@ if (isset($_SESSION['username'])) {
     <?php if ($authenticated): ?>
         <div class="container">
             <div style="text-align: right;">
-                Welcome, <?php echo $name; ?>!
+                Welcome, <b><?php echo $name; ?></b>!
                 <form method="post" action="logout.php" style="display: inline-block;">
-                    <input type="submit" name="logout" value="Log out">
+                    &nbsp&nbsp&nbsp<input type="submit" name="logout" value="Log out">
                 </form>
             </div>
             <h1>Leads Dashboard</h1>
