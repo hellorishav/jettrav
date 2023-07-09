@@ -65,7 +65,7 @@
 </head>
 <body>
     <div class="header">
-        <div class="logo">Jettrav</div>
+        <a href="home.php" class="logo">Jettrav</a>
         <div class="header-links">
             <a href="dashboard.php">Dashboard</a> <!-- Changed the login link to Dashboard -->
             <a href="survey.php">Survey</a>
@@ -74,7 +74,7 @@
             <?php
             if (isset($_SESSION['username'])) {
                 // If the 'username' session variable is set, show the logout button
-                echo '<a href="logout.php">Logout</a>';
+                echo '<a href="logout.php" class="login-button">Logout</a>';
             } else {
                 // If the 'username' session variable is not set, show the login button
                 echo '<a href="login.php" class="login-button">Login</a>';
