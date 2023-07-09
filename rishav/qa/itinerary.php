@@ -153,16 +153,20 @@ $conn->close();
     <div class="container">
         <h1>Create Itinerary</h1>
 
-        <?php if (empty($clientName)): ?>
+        <?php if (!isset($successMessage)): ?>
             <form method="post" action="">
                 <input type="text" name="clientID" placeholder="Client ID" value="<?php echo $clientID; ?>" required>
                 <input type="submit" name="retrieve-client" value="Retrieve Client">
             </form>
-
-            <?php if (!empty($clientID)): ?>
-
-            <?php endif; ?>
         <?php else: ?>
+            <div class="success-message"><?php echo $successMessage; ?></div>
+            <form method="post" action="">
+                <input type="text" name="clientID" placeholder="Client ID" value="<?php echo $clientID; ?>" required>
+                <input type="submit" name="retrieve-client" value="Create Another Itinerary">
+            </form>
+        <?php endif; ?>
+
+        <?php if (!empty($clientName) && !isset($successMessage)): ?>
             <div>
                 <strong>Client ID:</strong> <?php echo $clientID; ?><br>
                 <strong>Client Name:</strong> <?php echo $clientName; ?><br>
@@ -182,9 +186,7 @@ $conn->close();
                 <input type="submit" name="submit" value="Create Itinerary">
             </form>
 
-            <?php if (isset($successMessage)): ?>
-                <div class="success-message"><?php echo $successMessage; ?></div>
-            <?php elseif (isset($errorMessage)): ?>
+            <?php if (isset($errorMessage)): ?>
                 <div class="error-message"><?php echo $errorMessage; ?></div>
             <?php endif; ?>
         <?php endif; ?>
