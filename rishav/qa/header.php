@@ -23,6 +23,8 @@
         .logo {
             font-weight: bold;
             font-size: 24px;
+            color: #333; /* Added color */
+            text-decoration: none; /* Added text decoration */
         }
 
         .header-links {
@@ -34,8 +36,8 @@
             margin-left: 20px;
             text-decoration: none;
             color: #333;
-            font-weight: 500; /* Added font weight */
-            transition: color 0.3s ease; /* Added transition effect */
+            font-weight: 500;
+            transition: color 0.3s ease;
         }
 
         .header-links a:hover {
@@ -47,18 +49,11 @@
             padding: 8px 16px;
             border: none;
             border-radius: 4px;
+            background-color: #1976d2;
+            color: #fff;
             font-weight: 500;
             text-decoration: none;
             transition: background-color 0.3s ease;
-            display: block;
-            margin-bottom: 12px;
-            padding: 12px 0;
-            background-color: #2196f3;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 4px;
-            font-size: 18px;
-            transition: background-color 0.3s;
         }
 
         .login-button:hover {
@@ -74,7 +69,7 @@
     <div class="header">
         <a href="home.php" class="logo">Jettrav</a>
         <div class="header-links">
-            <a href="dashboard.php">Dashboard</a> <!-- Changed the login link to Dashboard -->
+            <a href="dashboard.php" style="color: #1976d2;">Dashboard</a>
             <a href="survey.php">Survey</a>
             <a href="view.php">View Itinerary</a>
             <a href="itinerary.php">Create Itinerary</a>
