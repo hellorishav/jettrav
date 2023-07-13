@@ -20,7 +20,7 @@ if (isset($_SESSION['username'])) {
     }
 
     // Fetch the user's name from the database
-    $query = "SELECT name FROM credentials WHERE username = '$username'";
+    $query = "SELECT name FROM credentials WHERE username = '$username'"; 
     $result = $conn->query($query);
 
     if ($result && $result->num_rows > 0) {
