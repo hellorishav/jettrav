@@ -16,5 +16,5 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)/$ /$1 [L,R]
 
 # Setting Homepage
-
+ 
 DirectoryIndex home.php
