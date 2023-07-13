@@ -1,9 +1,20 @@
 RewriteEngine On
 
-# Redirect /survey.php to /survey
+# Removing extensions at end of filename
+
+RewriteEngine On
+RewriteBase /
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s([^.]+)\.php [NC]
+RewriteRule ^ %1 [R=301,L]
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}.php -f
-RewriteRule ^([^\.]+)/?$ $1 [NC,L]
+RewriteRule ^(.*?)/?$ $1.php [NC,L]
 
-# Set homepage to home.php
-RewriteRule ^$ home.php [L]
+# Remove trailing slash from end of URL
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)/$ /$1 [L,R]
+
+# Setting Homepage
+
+DirectoryIndex home.php
