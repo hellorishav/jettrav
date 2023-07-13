@@ -77,7 +77,7 @@
 </head>
 <body>
     <div class="header">
-        <a href="home.php" class="logo">
+        <a href="https://jettrav.rishavkumar.io/" class="logo">
             <img src="logo.svg" alt="Jettrav Logo">
         </a>
         <div class="header-links">
